@@ -1397,7 +1397,7 @@
               </span>
               <div class="hero-3d-controls">
                 <button type="button" id="btn-3d-day" class="chip-btn is-active" onclick="setThreeLight('day')" data-i18n="light_day">DAYLIGHT</button>
-                <button type="button" id="btn-3d-evening" class="chip-btn" onclick="setThreeLight('evening')" data-i18n="light_evening">EVENING</button>
+                <button type="button" id="btn-3d-evening" class="chip-btn" onclick="setThreeLight('warm')" data-i18n="light_evening">WARM OAK</button>
                 <button type="button" id="btn-3d-auto" class="chip-btn is-active" onclick="toggleAutoRotate3d()" data-i18n="btn_auto_rotate">AUTO-ROTATE</button>
                 <button type="button" class="chip-btn" onclick="resetThreeCamera()" data-i18n="btn_reset_view">RESET VIEW</button>
                 <button type="button" class="chip-btn chip-btn--brass" onclick="document.getElementById('glb-upload-input').click()" data-i18n="load_glb">LOAD .GLB</button>
@@ -1439,36 +1439,39 @@
       </div>
 
       <!-- BOTTOM-LEFT STATIC IMAGE SHOWCASE CARD (NO <video> ELEMENT, 4 CLICKABLE SEGMENTS) -->
-      <aside class="hero-showcase-card" aria-label="Architectural Highlights">
+      <aside class="hero-showcase-card" aria-label="Before and After Highlights">
         <div class="hero-showcase-box">
-          <img id="hero-static-card-img" alt="Nord Bau Centrum Architectural Preview" />
+          <img id="hero-static-card-img" alt="Nord Bau Centrum Before and After Preview" />
         </div>
         <p class="hero-showcase-caption" id="showcase-caption"></p>
-        <div class="segment-progress-row" role="tablist" aria-label="Preview Segments">
-          <button type="button" class="segment-progress-hit is-active" onclick="selectHeroSegment(0)" aria-label="View 1">
+        <div class="segment-progress-row" role="tablist" aria-label="Before and After Segments">
+          <button type="button" class="segment-progress-hit is-active" onclick="selectHeroSegment(0)" title="01 BEFORE 01" aria-label="01 BEFORE 01">
             <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(1)" aria-label="View 2">
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(1)" title="02 AFTER 01" aria-label="02 AFTER 01">
             <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(2)" aria-label="View 3">
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(2)" title="03 BEFORE 02" aria-label="03 BEFORE 02">
             <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(3)" aria-label="View 4">
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(3)" title="04 AFTER 02" aria-label="04 AFTER 02">
             <span class="segment-progress-bar"></span>
           </button>
+        </div>
+        <div id="hero-segment-tag" style="margin-top:6px; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-brass);">
+          01 BEFORE 01
         </div>
       </aside>
     </section>
 
     <!-- =======================================================================
-         BEFORE / AFTER RENOVATION SHOWCASE & INTERACTIVE SLIDER
+         BEFORE / AFTER RENOVATION SHOWCASE, INTERACTIVE SLIDER & 4-CARD GRID
     ======================================================================== -->
     <section id="before-after" class="editorial-section">
       <div class="section-header-flex">
         <h2 class="section-heading" id="ba-heading"></h2>
         <p class="section-subcopy" data-i18n="ba_subcopy">
-          Slide across our architectural bathroom and interior transformations — top half of our Japandi reference study as BEFORE and bottom half as AFTER, alongside architectural views.
+          Compare our four architectural bathroom renovation states — Project 01 (Before_01.jpg → After_01.jpg) and Project 02 (Before_02.jpg → After_02.jpg) — with an interactive split slider and 4-card overview.
         </p>
       </div>
 
@@ -1503,20 +1506,20 @@
         <div class="lux-panel ba-side-panel">
           <div>
             <div style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-oak); margin-bottom:10px;" data-i18n="select_project_label">
-              SELECT RENOVATION CASE
+              SELECT RENOVATION PROJECT
             </div>
             <div class="project-selector-list">
               <button type="button" class="project-option-btn is-active" onclick="selectBeforeAfterCase(0, this)">
-                <div class="project-option-title">01 · Japandi Bath Makeover (Top / Bottom Study)</div>
-                <div class="project-option-sub">Top half BEFORE existing bath → Bottom half AFTER warm stone &amp; oak</div>
+                <div class="project-option-title">Project 01 · Kernsanierung → LED &amp; Naturstein</div>
+                <div class="project-option-sub">Before_01.jpg (Rohbau / Bestand) → After_01.jpg (Moderne Luxus-Sanierung)</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(1, this)">
-                <div class="project-option-title">02 · Hamburg Residence Daylight &amp; Evening</div>
-                <div class="project-option-sub">Architectural façade &amp; interior lighting comparison</div>
+                <div class="project-option-title">Project 02 · Altbau-Bad → Bogen &amp; Eiche</div>
+                <div class="project-option-sub">Before_02.jpg (Bestandsbad) → After_02.jpg (Architektonisches Bad mit Bogen)</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(2, this)">
-                <div class="project-option-title">03 · Custom Material &amp; Wet-Room Upgrade</div>
-                <div class="project-option-sub">Precision tilework, warm timber &amp; modern sanitary architecture</div>
+                <div class="project-option-title">Project 03 · Japandi &amp; Architectural Study</div>
+                <div class="project-option-sub">Before_01.jpg → After_02.jpg full warm architectural transformation</div>
               </button>
             </div>
           </div>
@@ -1531,6 +1534,41 @@
               <button type="button" class="stage-step-btn" onclick="updateBeforeAfterSplit(85)" data-i18n="split_85">85% AFTER</button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- 4-Card Gallery Grid Showing All 4 Distinct Before / After States -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:24px;">
+        <div class="lux-panel" style="padding:12px;">
+          <div style="aspect-ratio:4/3; border-radius:12px; overflow:hidden; background:#23201c;">
+            <img id="ba-grid-0" alt="01 BEFORE 01" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div style="margin-top:8px; font-size:11px; font-weight:500; letter-spacing:0.06em; color:var(--accent-oak);">01 · BEFORE 01</div>
+          <div style="font-size:12.5px; color:var(--text-obsidian);">Rohbau &amp; Leitungsführung (Before_01.jpg)</div>
+        </div>
+
+        <div class="lux-panel" style="padding:12px;">
+          <div style="aspect-ratio:4/3; border-radius:12px; overflow:hidden; background:#23201c;">
+            <img id="ba-grid-1" alt="02 AFTER 01" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div style="margin-top:8px; font-size:11px; font-weight:500; letter-spacing:0.06em; color:var(--accent-oak);">02 · AFTER 01</div>
+          <div style="font-size:12.5px; color:var(--text-obsidian);">LED-Nischen &amp; Glasdusche (After_01.jpg)</div>
+        </div>
+
+        <div class="lux-panel" style="padding:12px;">
+          <div style="aspect-ratio:4/3; border-radius:12px; overflow:hidden; background:#23201c;">
+            <img id="ba-grid-2" alt="03 BEFORE 02" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div style="margin-top:8px; font-size:11px; font-weight:500; letter-spacing:0.06em; color:var(--accent-oak);">03 · BEFORE 02</div>
+          <div style="font-size:12.5px; color:var(--text-obsidian);">Bestandsbad vor Sanierung (Before_02.jpg)</div>
+        </div>
+
+        <div class="lux-panel" style="padding:12px;">
+          <div style="aspect-ratio:4/3; border-radius:12px; overflow:hidden; background:#23201c;">
+            <img id="ba-grid-3" alt="04 AFTER 02" style="width:100%; height:100%; object-fit:cover; display:block;" />
+          </div>
+          <div style="margin-top:8px; font-size:11px; font-weight:500; letter-spacing:0.06em; color:var(--accent-oak);">04 · AFTER 02</div>
+          <div style="font-size:12.5px; color:var(--text-obsidian);">Architekturbogen &amp; Naturstein (After_02.jpg)</div>
         </div>
       </div>
     </section>
@@ -1619,12 +1657,12 @@
           <!-- Customer Photo & Video Upload for Price Estimation -->
           <div class="client-media-box">
             <label for="calc-client-media-input" style="display:block; font-size:11.5px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--accent-oak); margin-bottom:6px;" data-i18n="calc_upload_label">
-              ATTACH PHOTOS OR VIDEOS OF YOUR SPACE (IMAGES &amp; VIDEOS)
+              ATTACH PHOTOS OR VIDEOS OF YOUR SPACE (JPG, PNG, WEBP, MP4, MOV, WEBM)
             </label>
             <input
               type="file"
               id="calc-client-media-input"
-              accept="image/*,video/*"
+              accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.webm,image/*,video/*"
               multiple
               style="font-size:12px; color:var(--text-obsidian); width:100%;"
               onchange="handleClientMediaUpload(this.files, 'calc-media-preview')"
@@ -1783,11 +1821,11 @@
         <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Project Type &amp; Message</label>
         <input type="text" id="booking-project" class="form-input" placeholder="Bathroom Renovation / Interior Design / Inquiry" />
 
-        <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Upload Photos or Videos (Images &amp; Videos)</label>
+        <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Upload Photos or Videos (JPG, PNG, WEBP, MP4, MOV, WEBM)</label>
         <input
           type="file"
           id="booking-media-input"
-          accept="image/*,video/*"
+          accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.webm,image/*,video/*"
           multiple
           class="form-input"
           onchange="handleClientMediaUpload(this.files, 'booking-media-preview')"
@@ -1872,15 +1910,7 @@
         if (idx >= candidates.length) {
           imgEl.onerror = null;
           imgEl.src = makeFallbackDataUrl(fallbackLabel, bgHex, fgHex);
-          return;
-        }
-        imgEl.onerror = tryNext;
-        imgEl.src = candidates[idx++];
-      };
-      tryNext();
-    }
-
-    // Crops top or bottom half of ./images/Small Bathroom Makeover Before and After Idea in Japandi Style.jpg
+    // Crops top or bottom half of Japandi reference image only as fallback if individual Before_02/After_02 are absent
     function buildCroppedHalfDataUrl(imgElement, half) {
       try {
         if (!imgElement || !imgElement.naturalWidth || !imgElement.naturalHeight) return null;
@@ -1902,24 +1932,26 @@
     let japandiBottomDataUrl = null;
 
     function prepareJapandiSplitHalves() {
-      const probe = new Image();
-      probe.crossOrigin = 'anonymous';
-      probe.onload = () => {
-        japandiTopDataUrl = buildCroppedHalfDataUrl(probe, 'top');
-        japandiBottomDataUrl = buildCroppedHalfDataUrl(probe, 'bottom');
-        if (activeBeforeAfterIndex === 0) {
-          applyBeforeAfterImagesForCase(0);
-        }
-        if (activeHeroSegment === 0) {
-          updateHeroStaticSegmentImage(0);
-        }
+      const candidates = [
+        './images/Small Bathroom Makeover Before and After Idea in Japandi Style.png',
+        './images/Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'
+      ];
+      let i = 0;
+      const tryLoad = () => {
+        if (i >= candidates.length) return;
+        const probe = new Image();
+        probe.crossOrigin = 'anonymous';
+        probe.onload = () => {
+          japandiTopDataUrl = buildCroppedHalfDataUrl(probe, 'top');
+          japandiBottomDataUrl = buildCroppedHalfDataUrl(probe, 'bottom');
+        };
+        probe.onerror = () => {
+          i += 1;
+          tryLoad();
+        };
+        probe.src = candidates[i];
       };
-      probe.onerror = () => {
-        // Fallback if crossOrigin blocks canvas export on local/file mode
-        japandiTopDataUrl = null;
-        japandiBottomDataUrl = null;
-      };
-      probe.src = './images/Small Bathroom Makeover Before and After Idea in Japandi Style.jpg';
+      tryLoad();
     }
 
     function initRepoAssets() {
@@ -1938,6 +1970,12 @@
       loadResilientImage(document.getElementById('staff-img-2'), ['Amirhossein-Barati.webp'], 'Amirhossein Barati');
       loadResilientImage(document.getElementById('staff-img-3'), ['Robin.webp'], 'Robin');
       loadResilientImage(document.getElementById('staff-img-4'), ['Mo.-Najafi.webp'], 'Mo. Najafi');
+
+      // 4 Distinct Before & After Cards in Grid
+      loadResilientImage(document.getElementById('ba-grid-0'), ['Before_01.jpg'], '01 BEFORE 01');
+      loadResilientImage(document.getElementById('ba-grid-1'), ['After_01.jpg'], '02 AFTER 01');
+      loadResilientImage(document.getElementById('ba-grid-2'), ['Before_02.jpg'], '03 BEFORE 02');
+      loadResilientImage(document.getElementById('ba-grid-3'), ['After_02.jpg'], '04 AFTER 02');
 
       prepareJapandiSplitHalves();
       updateHeroStaticSegmentImage(0);
@@ -1991,14 +2029,14 @@
         btn_book_termin: 'BOOKING',
         h1_word3: 'HAMBURG',
         tagline: [
-          'ARCHITECTURAL BATHROOMS &',
-          'FULL BUILDING RENOVATIONS',
-          'CRAFTED FOR MODERN LIVING.'
+          'ARCHITECTURAL BATHROOM &',
+          'INTERIOR RENOVATION · VORHER & NACHHER ·',
+          'HAMBURG'
         ],
-        explore: ['EXPLORE 3D STUDIO'],
-        caption: ['Spaces built to elevate', 'everyday living'],
+        explore: ['EXPLORE 3D & BEFORE / AFTER'],
+        caption: ['Renovated spaces built to elevate', 'everyday living'],
         light_day: 'DAYLIGHT',
-        light_evening: 'EVENING',
+        light_evening: 'WARM OAK',
         btn_auto_rotate: 'AUTO-ROTATE',
         btn_reset_view: 'RESET VIEW',
         load_glb: 'LOAD .GLB',
@@ -2050,14 +2088,14 @@
         btn_book_termin: 'TERMIN BUCHEN',
         h1_word3: 'ATELIER',
         tagline: [
-          'ARCHITEKTONISCHE BÄDER &',
-          'KOMPLETT-SANIERUNGEN',
-          'FÜR ZEITLOSE WOHNQUALITÄT.'
+          'ARCHITEKTONISCHE BAD- &',
+          'INNENSANIERUNG · VORHER & NACHHER ·',
+          'HAMBURG'
         ],
-        explore: ['3D-STUDIO ENTDECKEN'],
-        caption: ['Räume, die den Alltag', 'spürbar veredeln'],
+        explore: ['3D & VORHER / NACHHER ENTDECKEN'],
+        caption: ['Sanierte Räume, die den Alltag', 'spürbar veredeln'],
         light_day: 'TAGESLICHT',
-        light_evening: 'ABENDLICHT',
+        light_evening: 'WARME EICHE',
         btn_auto_rotate: 'AUTO-DREHUNG',
         btn_reset_view: 'ANSICHT RESET',
         load_glb: '.GLB LADEN',
@@ -2160,26 +2198,18 @@
     // -----------------------------------------------------------------------
     let activeHeroSegment = 0;
     const HERO_SEGMENTS = [
-      { files: ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], useTopHalf: true, label: 'Japandi Before' },
-      { files: ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], useBottomHalf: true, label: 'Japandi After' },
-      { files: ['BG_site.jpg'], label: 'Architectural Daylight' },
-      { files: ['BG_site_night.jpg'], label: 'Evening Illumination' }
+      { files: ['Before_01.jpg'], tag: '01 BEFORE 01', label: '01 BEFORE 01' },
+      { files: ['After_01.jpg'], tag: '02 AFTER 01', label: '02 AFTER 01' },
+      { files: ['Before_02.jpg'], tag: '03 BEFORE 02', label: '03 BEFORE 02' },
+      { files: ['After_02.jpg'], tag: '04 AFTER 02', label: '04 AFTER 02' }
     ];
 
     function updateHeroStaticSegmentImage(idx) {
       const img = document.getElementById('hero-static-card-img');
+      const tagEl = document.getElementById('hero-segment-tag');
       const seg = HERO_SEGMENTS[idx] || HERO_SEGMENTS[0];
+      if (tagEl) tagEl.textContent = seg.tag;
       if (!img) return;
-      if (seg.useTopHalf && japandiTopDataUrl) {
-        img.onerror = null;
-        img.src = japandiTopDataUrl;
-        return;
-      }
-      if (seg.useBottomHalf && japandiBottomDataUrl) {
-        img.onerror = null;
-        img.src = japandiBottomDataUrl;
-        return;
-      }
       loadResilientImage(img, seg.files, seg.label, '#2C2722', '#C4A378');
     }
 
@@ -2192,7 +2222,7 @@
     }
 
     // -----------------------------------------------------------------------
-    // 6. BEFORE / AFTER RENOVATION SHOWCASE (JAPANDI TOP/BOTTOM + CASES)
+    // 6. BEFORE / AFTER RENOVATION SHOWCASE (4 DISTINCT BEFORE/AFTER IMAGES)
     // -----------------------------------------------------------------------
     let activeBeforeAfterIndex = 0;
 
@@ -2211,29 +2241,14 @@
       const afterEl = document.getElementById('ba-after-img');
 
       if (idx === 0) {
-        if (japandiTopDataUrl) {
-          beforeEl.onerror = null;
-          beforeEl.src = japandiTopDataUrl;
-        } else {
-          loadResilientImage(beforeEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'BEFORE · TOP HALF', '#2C2722', '#D8CFC0');
-        }
-        if (japandiBottomDataUrl) {
-          afterEl.onerror = null;
-          afterEl.src = japandiBottomDataUrl;
-        } else {
-          loadResilientImage(afterEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'AFTER · BOTTOM HALF', '#1C1B19', '#C4A378');
-        }
+        loadResilientImage(beforeEl, ['Before_01.jpg'], '01 BEFORE 01', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['After_01.jpg'], '02 AFTER 01', '#1C1B19', '#C4A378');
       } else if (idx === 1) {
-        loadResilientImage(beforeEl, ['BG_site.jpg'], 'DAYLIGHT VIEW', '#2C2722', '#D8CFC0');
-        loadResilientImage(afterEl, ['BG_site_night.jpg'], 'EVENING VIEW', '#1C1B19', '#C4A378');
+        loadResilientImage(beforeEl, ['Before_02.jpg'], '03 BEFORE 02', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['After_02.jpg'], '04 AFTER 02', '#1C1B19', '#C4A378');
       } else {
-        if (japandiBottomDataUrl) {
-          beforeEl.onerror = null;
-          beforeEl.src = japandiBottomDataUrl;
-        } else {
-          loadResilientImage(beforeEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'JAPANDI CONCEPT', '#2C2722', '#D8CFC0');
-        }
-        loadResilientImage(afterEl, ['BG_site_night.jpg', 'BG_site.jpg'], 'ARCHITECTURAL FINISH', '#1C1B19', '#C4A378');
+        loadResilientImage(beforeEl, ['Before_01.jpg'], '01 BEFORE 01', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['After_02.jpg'], '04 AFTER 02', '#1C1B19', '#C4A378');
       }
     }
 
@@ -2725,13 +2740,13 @@
     }
 
     function setThreeLight(mode) {
-      const evening = mode === 'evening';
+      const evening = mode === 'warm' || mode === 'evening';
       document.getElementById('btn-3d-day').classList.toggle('is-active', !evening);
       document.getElementById('btn-3d-evening').classList.toggle('is-active', evening);
       if (!dirLight3d || !warmLight3d || !hemiLight3d) return;
       dirLight3d.intensity = evening ? 0.55 : 1.85;
-      dirLight3d.color.setHex(evening ? 0x8AA6D6 : 0xFFF5E4);
-      hemiLight3d.intensity = evening ? 0.48 : 0.92;
+      dirLight3d.color.setHex(evening ? 0xC4A378 : 0xFFF5E4);
+      hemiLight3d.intensity = evening ? 0.52 : 0.92;
       warmLight3d.intensity = evening ? 2.4 : 0.85;
     }
 
