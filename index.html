@@ -48,7 +48,7 @@
     body {
       margin: 0;
       background: var(--bg-travertine);
-      font-family: 'Archivo', sans-serif;
+      font-family: 'Archivo', Tahoma, sans-serif;
       color: var(--text-ivory);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -166,7 +166,7 @@
     }
 
     /* =========================================================================
-       4. RESPONSIVE NAVIGATION & LUXURY PALETTE LOGO RECOLOR HOOK
+       4. RESPONSIVE NAVIGATION & HARMONIZED BRAND LOGO
     ========================================================================= */
     .site-header {
       position: relative;
@@ -196,40 +196,39 @@
       animation-delay: 0.1s;
     }
 
-    /* Harmonizes uploaded employer logos into the warm obsidian/brass/travertine palette */
     .brand-logo-slot {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
+      width: 42px;
       height: 30px;
       border-radius: 6px;
       overflow: hidden;
+      background: rgba(244, 240, 232, 0.06);
     }
 
     .brand-logo-slot img.recolored-logo {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: hue-rotate(-14deg) saturate(0.68) brightness(1.04) contrast(1.06);
-      mix-blend-mode: screen;
+      filter: sepia(0.35) hue-rotate(-16deg) saturate(0.75) brightness(1.06) contrast(1.05);
     }
 
     .brand-logo-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 10px 4px 6px;
+      gap: 8px;
+      padding: 4px 12px 4px 6px;
       border-radius: 999px;
-      background: rgba(244, 240, 232, 0.08);
-      border: 1px solid rgba(196, 163, 120, 0.35);
+      background: rgba(244, 240, 232, 0.09);
+      border: 1px solid rgba(196, 163, 120, 0.42);
     }
 
     .brand-label {
       font-family: 'Archivo', sans-serif;
       font-size: 11.5px;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent-brass);
       white-space: nowrap;
@@ -238,20 +237,20 @@
     .pill-nav {
       display: flex;
       align-items: center;
-      gap: 2px;
+      gap: 3px;
     }
 
     .pill-link {
       height: 40px;
-      padding: 0 16px;
+      padding: 0 14px;
       border-radius: 999px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 400;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 7px;
       background: rgba(244, 240, 232, 0.12);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -303,7 +302,7 @@
       border: none;
       background: transparent;
       color: var(--text-ivory);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 500;
       transition: background 0.22s ease, color 0.22s ease;
     }
@@ -315,12 +314,12 @@
 
     .header-cta-btn {
       height: 41px;
-      padding: 0 18px;
+      padding: 0 16px;
       border-radius: 999px;
       border: 1px solid rgba(244, 240, 232, 0.85);
       background: transparent;
       color: var(--text-ivory);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 400;
       letter-spacing: -0.02em;
       white-space: nowrap;
@@ -334,7 +333,6 @@
       border-color: var(--bg-travertine);
     }
 
-    /* Mobile / Tablet Hamburger (<= 860px) */
     .hamburger-btn {
       display: none;
       width: 44px;
@@ -361,7 +359,7 @@
       padding: 10px;
       gap: 6px;
       flex-direction: column;
-      background: rgba(24, 23, 21, 0.88);
+      background: rgba(24, 23, 21, 0.92);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(244, 240, 232, 0.25);
@@ -391,12 +389,12 @@
     }
 
     /* =========================================================================
-       5. HERO SECTION: HEADLINE, TAGLINE, DOWNWARD FLOATING/PARALLAX 3D & VIDEO
+       5. HERO SECTION: HEADLINE, TAGLINE, 3D STUDIO & VIDEO CARD
     ========================================================================= */
     .hero-section {
       position: relative;
       overflow: hidden;
-      min-height: clamp(820px, 78vw, 1340px);
+      min-height: clamp(860px, 80vw, 1420px);
       display: flex;
       flex-direction: column;
       z-index: 3;
@@ -418,8 +416,8 @@
       font-family: 'Playfair Display', serif;
       font-weight: 400;
       text-transform: uppercase;
-      font-size: clamp(40px, calc(39px + 4.9vw), 170px);
-      line-height: 0.87;
+      font-size: clamp(38px, calc(38px + 4.7vw), 162px);
+      line-height: 0.88;
       letter-spacing: -0.005em;
       color: var(--text-ivory);
     }
@@ -438,21 +436,21 @@
       font-family: 'Archivo', sans-serif;
       font-weight: 400;
       text-transform: uppercase;
-      font-size: clamp(13px, 1.66vw, 26px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
+      font-size: clamp(13px, 1.6vw, 25px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
       color: var(--text-ivory);
       max-width: 560px;
     }
 
     .hero-tagline-line-1 {
-      padding-left: 3.6em;
+      padding-left: 3.4em;
     }
 
     .explore-row {
       position: relative;
       z-index: 6;
-      padding: clamp(32px, 5vw, 90px) clamp(16px, 2.2vw, 40px) 0;
+      padding: clamp(28px, 4.4vw, 80px) clamp(16px, 2.2vw, 40px) 0;
     }
 
     .explore-link {
@@ -472,11 +470,11 @@
     /* Smooth downward floating & scroll parallax 3D architectural stage */
     .hero-3d-wrapper {
       position: relative;
-      z-index: 2;
+      z-index: 4;
       margin-left: auto;
       margin-right: clamp(16px, 4.8vw, 72px);
       margin-top: clamp(18px, 2vw, 32px);
-      width: min(92vw, 920px);
+      width: min(94vw, 980px);
       opacity: 0;
       transform: translateY(55px) scale(1.04);
       animation: heroStageEnter 3.2s cubic-bezier(0.22, 0.61, 0.24, 1) 0.2s forwards;
@@ -504,11 +502,11 @@
     .hero-3d-card {
       border-radius: clamp(14px, 1.4vw, 24px);
       overflow: hidden;
-      background: rgba(20, 20, 19, 0.56);
+      background: rgba(20, 20, 19, 0.72);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(196, 163, 120, 0.34);
-      box-shadow: 0 32px 75px rgba(10, 10, 9, 0.42);
+      border: 1px solid rgba(196, 163, 120, 0.36);
+      box-shadow: 0 32px 75px rgba(10, 10, 9, 0.45);
     }
 
     .hero-3d-topbar {
@@ -518,7 +516,7 @@
       justify-content: space-between;
       gap: 10px;
       padding: 12px 16px;
-      background: rgba(20, 20, 19, 0.72);
+      background: rgba(20, 20, 19, 0.82);
       border-bottom: 1px solid rgba(244, 240, 232, 0.12);
       font-size: 11.5px;
     }
@@ -530,15 +528,57 @@
       gap: 6px;
     }
 
+    .hero-3d-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(28, 27, 25, 0.88);
+      border-bottom: 1px solid rgba(244, 240, 232, 0.1);
+      font-size: 11px;
+    }
+
+    .toolbar-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-label {
+      color: rgba(244, 240, 232, 0.68);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      margin-right: 2px;
+    }
+
+    .swatch-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 2px solid rgba(244, 240, 232, 0.35);
+      padding: 0;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .swatch-dot.is-active {
+      transform: scale(1.18);
+      border-color: var(--accent-brass);
+      box-shadow: 0 0 0 2px rgba(20, 20, 19, 0.8);
+    }
+
     .chip-btn {
       height: 28px;
-      padding: 0 12px;
+      padding: 0 11px;
       border-radius: 999px;
       border: 1px solid rgba(244, 240, 232, 0.2);
       background: rgba(244, 240, 232, 0.08);
       color: var(--text-ivory);
       font-size: 11px;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       transition: background 0.2s ease, color 0.2s ease;
     }
 
@@ -557,9 +597,25 @@
       border-color: rgba(196, 163, 120, 0.6);
     }
 
+    .chip-btn--danger {
+      background: rgba(168, 72, 62, 0.25);
+      border-color: rgba(226, 120, 108, 0.55);
+      color: #FAD8D4;
+    }
+
+    .tool-select {
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 240, 232, 0.22);
+      background: #23221F;
+      color: var(--text-ivory);
+      font-size: 11px;
+    }
+
     #nordbau-3d-canvas {
       width: 100%;
-      height: clamp(320px, 38vw, 490px);
+      height: clamp(340px, 40vw, 510px);
       display: block;
       cursor: grab;
     }
@@ -572,7 +628,7 @@
     .hero-video-card {
       position: relative;
       z-index: 6;
-      width: clamp(170px, 18vw, 290px);
+      width: clamp(175px, 18vw, 290px);
       margin: clamp(-140px, -11vw, -70px) 0 44px clamp(16px, 2.2vw, 40px);
       opacity: 0;
       transform: translateY(30px) scale(0.97);
@@ -699,7 +755,7 @@
     }
 
     .section-subcopy {
-      max-width: 520px;
+      max-width: 540px;
       margin: 0;
       font-size: clamp(13.5px, 1.15vw, 16px);
       line-height: 1.6;
@@ -1022,29 +1078,11 @@
       transform: translateZ(18px);
     }
 
-    .team-card {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .team-avatar-frame {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #E7E1D6;
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .team-avatar-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
     }
 
@@ -1147,7 +1185,6 @@
       margin-bottom: 12px;
     }
 
-    /* DSGVO / GDPR Cookie & Renovation Newsletter Banner */
     .cookie-banner {
       position: fixed;
       left: 16px;
@@ -1192,7 +1229,7 @@
     /* =========================================================================
        11. RESPONSIVE BREAKPOINTS (TABLET <= 860px & MOBILE <= 640px)
     ========================================================================= */
-    @media (max-width: 860px) {
+    @media (max-width: 980px) {
       .pill-nav,
       .header-cta-btn {
         display: none;
@@ -1201,7 +1238,9 @@
       .hamburger-btn {
         display: inline-flex;
       }
+    }
 
+    @media (max-width: 860px) {
       .hero-tagline {
         margin-left: 0;
         margin-top: 22px;
@@ -1238,12 +1277,12 @@
   </style>
 </head>
 <body>
-  <!-- Hidden inputs for custom .GLB model & staff photo local preview -->
+  <!-- Hidden inputs for custom .GLB model, staff photo & brand logo local preview -->
   <input type="file" id="glb-upload-input" accept=".glb,.gltf" style="display:none;" />
   <input type="file" id="staff-photo-input" accept="image/*" style="display:none;" />
   <input type="file" id="brand-logo-input" accept="image/*" style="display:none;" />
 
-  <div class="page-canvas">
+  <div class="page-canvas" id="page-canvas-bg">
     <!-- 4 Full-Height Vertical Architectural Grid Lines -->
     <div class="grid-lines" aria-hidden="true">
       <span class="grid-line grid-line--1"></span>
@@ -1257,16 +1296,14 @@
     ======================================================================== -->
     <section id="top" class="hero-section">
       <header class="site-header">
-        <!-- Left: Harmonized Nord Bau Logo + Palette Swap / Custom Logo Hook -->
+        <!-- Left: Nord Bau Logo from ./images/LogoWithoutBG.png with fallback -->
         <div style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;" class="nav-drop-item">
           <a href="#top" class="brand-link brand-logo-badge" aria-label="Nord Bau Centrum Home">
             <span class="brand-logo-slot" id="header-logo-slot">
               <img
                 id="nordbau-logo-img"
                 class="recolored-logo"
-                src="logo.webp"
                 alt="Nord Bau Centrum Logo"
-                onerror="this.style.display='none'; document.getElementById('nordbau-svg-fallback').style.display='block';"
               />
               <svg id="nordbau-svg-fallback" style="display:none;" width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="1.5" y="2" width="37" height="26" rx="4" stroke="#C4A378" stroke-width="1.6" />
@@ -1276,34 +1313,36 @@
             </span>
             <span class="brand-label">NORDBAU CENTRUM</span>
           </a>
-          <button type="button" class="chip-btn" onclick="document.getElementById('brand-logo-input').click()" title="Load or swap company logo image">
+          <button type="button" class="chip-btn" onclick="document.getElementById('brand-logo-input').click()" title="Load custom logo file">
             LOGO
           </button>
         </div>
 
-        <!-- Center Pill Nav (Desktop > 860px) -->
+        <!-- Center Pill Nav -->
         <nav class="pill-nav" aria-label="Main Navigation">
           <a href="#top" class="pill-link pill-link--active nav-drop-item" style="animation-delay:0.2s;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
               <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             </svg>
             <span data-i18n="nav_home">HOME</span>
           </a>
-          <a href="#before-after" class="pill-link nav-drop-item" style="animation-delay:0.28s;" data-i18n="nav_renovation">RENOVATION</a>
-          <a href="#cost-calculator" class="pill-link nav-drop-item" style="animation-delay:0.36s;" data-i18n="nav_calculator">CALCULATOR</a>
+          <a href="#studio-3d" class="pill-link nav-drop-item" style="animation-delay:0.26s;" data-i18n="nav_3d">3D STUDIO</a>
+          <a href="#before-after" class="pill-link nav-drop-item" style="animation-delay:0.32s;" data-i18n="nav_renovation">BEFORE / AFTER</a>
+          <a href="#cost-calculator" class="pill-link nav-drop-item" style="animation-delay:0.38s;" data-i18n="nav_calculator">ESTIMATOR</a>
           <a href="#team-section" class="pill-link nav-drop-item" style="animation-delay:0.44s;" data-i18n="nav_team">TEAM</a>
         </nav>
 
-        <!-- Right: DE/EN Toggle + Termin Buchen CTA + Mobile Hamburger -->
+        <!-- Right: EN / DE / FA Toggle + Booking CTA + Mobile Hamburger -->
         <div class="header-right">
           <div class="lang-switch nav-drop-item" role="group" aria-label="Language Selector">
-            <button type="button" id="btn-lang-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
             <button type="button" id="btn-lang-en" class="lang-btn is-active" onclick="setLanguage('en')">EN</button>
+            <button type="button" id="btn-lang-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
+            <button type="button" id="btn-lang-fa" class="lang-btn" onclick="setLanguage('fa')">FA</button>
           </div>
 
           <button type="button" class="header-cta-btn nav-drop-item" onclick="openBookingModal()" data-i18n="btn_book_termin">
-            BOOK CONSULTATION
+            BOOKING
           </button>
 
           <button type="button" id="hamburger-btn" class="hamburger-btn nav-drop-item" aria-label="Toggle Menu" aria-expanded="false" onclick="toggleMobileDrawer()">
@@ -1316,15 +1355,14 @@
         </div>
       </header>
 
-      <!-- Mobile / Tablet Glass Drawer (<= 860px) -->
+      <!-- Mobile / Tablet Glass Drawer -->
       <div id="mobile-drawer" class="mobile-drawer">
-        <a href="#top" class="mobile-nav-pill mobile-nav-pill--active" onclick="closeMobileDrawer()">
-          <span data-i18n="nav_home">HOME</span>
-        </a>
-        <a href="#before-after" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_renovation">RENOVATION</a>
-        <a href="#cost-calculator" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_calculator">CALCULATOR</a>
+        <a href="#top" class="mobile-nav-pill mobile-nav-pill--active" onclick="closeMobileDrawer()" data-i18n="nav_home">HOME</a>
+        <a href="#studio-3d" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_3d">3D STUDIO</a>
+        <a href="#before-after" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_renovation">BEFORE / AFTER</a>
+        <a href="#cost-calculator" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_calculator">ESTIMATOR</a>
         <a href="#team-section" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_team">TEAM</a>
-        <button type="button" class="mobile-nav-pill" onclick="closeMobileDrawer(); openBookingModal();" data-i18n="btn_book_termin">BOOK CONSULTATION</button>
+        <button type="button" class="mobile-nav-pill" onclick="closeMobileDrawer(); openBookingModal();" data-i18n="btn_book_termin">BOOKING</button>
       </div>
 
       <!-- HERO HEADLINE + TAGLINE (WORD-BY-WORD "wordIn") -->
@@ -1346,7 +1384,7 @@
 
       <!-- EXPLORE LINK -->
       <div class="explore-row">
-        <a href="#before-after" class="explore-link">
+        <a href="#studio-3d" class="explore-link">
           <span id="explore-label"></span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M7 7h10v10" />
@@ -1355,33 +1393,65 @@
         </a>
       </div>
 
-      <!-- DOWNWARD FLOATING & PARALLAX 3D ARCHITECTURAL BATHROOM STAGE -->
-      <div class="hero-3d-wrapper">
+      <!-- INTERACTIVE 3D BATHROOM & ARCHITECTURAL MODEL STAGE (DOWNWARD PARALLAX) -->
+      <div id="studio-3d" class="hero-3d-wrapper">
         <div class="hero-3d-drift" id="hero-downward-drift">
           <div class="hero-3d-card">
+            <!-- Top Bar: Lighting, Orbit, Load .GLB -->
             <div class="hero-3d-topbar">
-              <span id="stage-readout" style="color:var(--accent-brass); letter-spacing:0.05em; text-transform:uppercase;">
-                3D RENOVATION DIORAMA · DRAG TO ORBIT · SCROLL TO DRIFT
+              <span id="stage-readout" style="color:var(--accent-brass); letter-spacing:0.04em; text-transform:uppercase;">
+                3D ARCHITECTURAL BATHROOM · CLICK OR SELECT PART TO EDIT
               </span>
               <div class="hero-3d-controls">
-                <button type="button" id="btn-mode-diorama" class="chip-btn is-active" onclick="setThreeSpaceMode('diorama')" data-i18n="mode_diorama">3D DIORAMA</button>
-                <button type="button" id="btn-mode-space" class="chip-btn" onclick="setThreeSpaceMode('space')" data-i18n="mode_space">ARCHITECTURAL SPACE</button>
                 <button type="button" id="btn-3d-day" class="chip-btn is-active" onclick="setThreeLight('day')" data-i18n="light_day">DAYLIGHT</button>
-                <button type="button" id="btn-3d-warm" class="chip-btn" onclick="setThreeLight('warm')" data-i18n="light_warm">WARM OAK</button>
+                <button type="button" id="btn-3d-evening" class="chip-btn" onclick="setThreeLight('evening')" data-i18n="light_evening">EVENING</button>
+                <button type="button" id="btn-3d-auto" class="chip-btn is-active" onclick="toggleAutoRotate3d()" data-i18n="btn_auto_rotate">AUTO-ROTATE</button>
+                <button type="button" class="chip-btn" onclick="resetThreeCamera()" data-i18n="btn_reset_view">RESET VIEW</button>
                 <button type="button" class="chip-btn chip-btn--brass" onclick="document.getElementById('glb-upload-input').click()" data-i18n="load_glb">LOAD .GLB</button>
               </div>
             </div>
+
+            <!-- Second Bar: Simple Color Swatches, Material Selector & Hide/Delete/Restore Part -->
+            <div class="hero-3d-toolbar">
+              <div class="toolbar-group">
+                <span class="toolbar-label" data-i18n="lbl_part">PART:</span>
+                <select id="part-select" class="tool-select" onchange="selectPartByName(this.value)"></select>
+
+                <button type="button" id="btn-toggle-part" class="chip-btn chip-btn--danger" onclick="toggleSelectedPartVisibility()" data-i18n="btn_hide_part">
+                  HIDE / DELETE PART
+                </button>
+                <button type="button" class="chip-btn" onclick="restoreAllParts()" data-i18n="btn_restore_parts">
+                  RESTORE ALL
+                </button>
+              </div>
+
+              <div class="toolbar-group">
+                <span class="toolbar-label" data-i18n="lbl_material">MATERIAL:</span>
+                <select id="material-preset-select" class="tool-select" onchange="applyMaterialPreset(this.value)">
+                  <option value="stone">Limestone / Stone</option>
+                  <option value="oak">Warm Oak Wood</option>
+                  <option value="brass">Brushed Brass / Metal</option>
+                  <option value="glass">Clear / Frosted Glass</option>
+                </select>
+
+                <span class="toolbar-label" data-i18n="lbl_color">COLOR:</span>
+                <button type="button" class="swatch-dot is-active" style="background:#D8CFC0;" title="Warm Travertine" onclick="applyTintColor(0xD8CFC0, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#7A7F85;" title="Cool Basalt Grey" onclick="applyTintColor(0x7A7F85, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#C4A378;" title="Brushed Champagne" onclick="applyTintColor(0xC4A378, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#262421;" title="Matte Obsidian" onclick="applyTintColor(0x262421, this)"></button>
+              </div>
+            </div>
+
             <canvas id="nordbau-3d-canvas"></canvas>
           </div>
         </div>
       </div>
 
-      <!-- BOTTOM-LEFT VIDEO CARD -->
+      <!-- BOTTOM-LEFT VIDEO CARD (uses ./images/logo-anim.mp4 with fallback) -->
       <aside class="hero-video-card" aria-label="Renovation Reel">
         <div class="hero-video-box">
           <video
             id="hero-video"
-            src="https://cdn.sceneai.art/Hero%20Section%20Video/adec243d-ffda-48cf-a8a8-26e6d6bcbe9b.mp4"
             autoplay
             muted
             loop
@@ -1422,13 +1492,11 @@
           <img
             id="ba-after-img"
             class="ba-layer-after"
-            src="https://cdn.sceneai.art/Bg%20images/c789ac4d-f2c8-463a-93f6-1f8c6fa09f9a.png"
             alt="Renovated Architectural Space After"
           />
           <img
             id="ba-before-img"
             class="ba-layer-before"
-            src="https://cdn.sceneai.art/Bg%20images/bf2e3004-db02-48a1-8e15-c6a58c158b5c.png"
             alt="Existing Space Before Renovation"
           />
           <div class="ba-divider-line"></div>
@@ -1455,11 +1523,11 @@
             <div class="project-selector-list">
               <button type="button" class="project-option-btn is-active" onclick="selectBeforeAfterCase(0, this)">
                 <div class="project-option-title">01 · Elbchaussee Master Bath &amp; Suite</div>
-                <div class="project-option-sub">14.5 m² · Limestone Slab, Fluted Oak &amp; Walk-In Glass</div>
+                <div class="project-option-sub">14.5 m² · Travertine Slab, Warm Oak &amp; Walk-In Glass</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(1, this)">
-                <div class="project-option-title">02 · Blankenese Villa Interior Gut Renovation</div>
-                <div class="project-option-sub">38 m² · Full Wet-Room Waterproofing &amp; Warm Brass</div>
+                <div class="project-option-title">02 · Blankenese Villa Evening &amp; Daylight</div>
+                <div class="project-option-sub">38 m² · Full Wet-Room Waterproofing &amp; Brushed Brass</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(2, this)">
                 <div class="project-option-title">03 · Eppendorf Townhouse Spa &amp; Living</div>
@@ -1583,7 +1651,7 @@
     </section>
 
     <!-- =======================================================================
-         TEAM & LEADERSHIP SECTION WITH LOCAL FILE PHOTO UPLOAD PREVIEW
+         TEAM & LEADERSHIP SECTION (./images/<Name>.webp + LOCAL UPLOAD OVERRIDE)
     ======================================================================== -->
     <section id="team-section" class="editorial-section">
       <div class="section-header-flex">
@@ -1597,12 +1665,7 @@
         <!-- 0: Kianoosh Nouri — CEO / Geschäftsführung -->
         <article class="lux-panel team-card team-card--ceo" data-tilt-card>
           <div class="team-avatar-frame">
-            <img
-              id="staff-img-0"
-              src="Kianoosh-Nouri.webp"
-              alt="Kianoosh Nouri — CEO & Geschäftsführung"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Kianoosh+Nouri+%7C+CEO'"
-            />
+            <img id="staff-img-0" alt="Kianoosh Nouri — CEO & Geschäftsführung" />
           </div>
           <div class="team-role" data-i18n="role_0">CEO · GESCHÄFTSFÜHRUNG</div>
           <h3 class="team-name">Kianoosh Nouri</h3>
@@ -1617,12 +1680,7 @@
         <!-- 1: Mahsa Ershadi -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
-            <img
-              id="staff-img-1"
-              src="Mahsa-Ershadi.webp"
-              alt="Mahsa Ershadi — Interior & Design Specialist"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Mahsa+Ershadi'"
-            />
+            <img id="staff-img-1" alt="Mahsa Ershadi — Interior & Design Specialist" />
           </div>
           <div class="team-role" data-i18n="role_1">INTERIOR ARCHITECTURE &amp; DESIGN</div>
           <h3 class="team-name">Mahsa Ershadi</h3>
@@ -1637,12 +1695,7 @@
         <!-- 2: Amirhossein Barati -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
-            <img
-              id="staff-img-2"
-              src="Amirhossein-Barati.webp"
-              alt="Amirhossein Barati — Project & Technical Lead"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Amirhossein+Barati'"
-            />
+            <img id="staff-img-2" alt="Amirhossein Barati — Project & Technical Lead" />
           </div>
           <div class="team-role" data-i18n="role_2">TECHNICAL PLANNING &amp; EXECUTION</div>
           <h3 class="team-name">Amirhossein Barati</h3>
@@ -1657,12 +1710,7 @@
         <!-- 3: Robin -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
-            <img
-              id="staff-img-3"
-              src="Robin.webp"
-              alt="Robin — Renovation & Client Advisor"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Robin'"
-            />
+            <img id="staff-img-3" alt="Robin — Renovation & Client Advisor" />
           </div>
           <div class="team-role" data-i18n="role_3">RENOVATION &amp; CLIENT ADVISORY</div>
           <h3 class="team-name">Robin</h3>
@@ -1677,12 +1725,7 @@
         <!-- 4: Mo. Najafi -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
-            <img
-              id="staff-img-4"
-              src="Mo.-Najafi.webp"
-              alt="Mo. Najafi — Master Craft & Site Operations"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Mo.+Najafi'"
-            />
+            <img id="staff-img-4" alt="Mo. Najafi — Master Craft & Site Operations" />
           </div>
           <div class="team-role" data-i18n="role_4">SITE OPERATIONS &amp; CRAFTSMANSHIP</div>
           <h3 class="team-name">Mo. Najafi</h3>
@@ -1705,10 +1748,10 @@
         <span style="color:var(--text-muted);">Hamburg &amp; Northern Germany · Architectural Renovation, 3D Design &amp; Bad-Sanierung</span>
       </div>
       <div style="display:flex; flex-wrap:wrap; align-items:center; gap:18px;">
-        <a href="#before-after" data-i18n="nav_renovation">RENOVATION</a>
-        <a href="#cost-calculator" data-i18n="nav_calculator">CALCULATOR</a>
+        <a href="#before-after" data-i18n="nav_renovation">BEFORE / AFTER</a>
+        <a href="#cost-calculator" data-i18n="nav_calculator">ESTIMATOR</a>
         <button type="button" onclick="openBookingModal()" style="border:none; background:transparent; padding:0; font-size:12.5px; text-decoration:underline; color:var(--text-obsidian);" data-i18n="btn_book_termin">
-          BOOK CONSULTATION
+          BOOKING
         </button>
         <button type="button" onclick="openCookieBanner()" style="border:none; background:transparent; padding:0; font-size:12.5px; text-decoration:underline; color:var(--text-obsidian);" data-i18n="cookie_settings_btn">
           COOKIE &amp; NEWSLETTER SETTINGS
@@ -1808,11 +1851,104 @@
   </div>
 
   <!-- =========================================================================
-       JAVASCRIPT: WORD ANIMATIONS, I18N, BEFORE/AFTER, CALCULATOR, TEAM & THREE.JS
+       JAVASCRIPT: RESILIENT ASSET LOADER, WORD ANIMATIONS, I18N, 3D STUDIO & FORMS
   ========================================================================== -->
   <script>
     // -----------------------------------------------------------------------
-    // 1. WORD-BY-WORD "wordIn" ANIMATION RENDERER
+    // 1. RESILIENT MULTI-PATH IMAGE & VIDEO LOADER FOR GITHUB ./images/ FOLDER
+    // -----------------------------------------------------------------------
+    function makeFallbackDataUrl(label, bgHex, fgHex) {
+      const safeText = String(label || 'NORDBAU').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+        <rect width="720" height="540" fill="${bgHex}" />
+        <rect x="28" y="28" width="664" height="484" rx="18" fill="none" stroke="${fgHex}" stroke-opacity="0.45" stroke-width="2" />
+        <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" font-family="Georgia, serif" font-size="30">${safeText}</text>
+        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" fill-opacity="0.7" font-family="sans-serif" font-size="14" letter-spacing="3">NORDBAU CENTRUM · HAMBURG</text>
+      </svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    function loadResilientImage(imgEl, fileNames, fallbackLabel, bgHex = '#2C2722', fgHex = '#C4A378') {
+      if (!imgEl) return;
+      const candidates = [];
+      (Array.isArray(fileNames) ? fileNames : [fileNames]).forEach((name) => {
+        candidates.push(`./images/${name}`);
+        candidates.push(`images/${name}`);
+      });
+
+      let idx = 0;
+      const tryNext = () => {
+        if (idx >= candidates.length) {
+          imgEl.onerror = null;
+          imgEl.src = makeFallbackDataUrl(fallbackLabel, bgHex, fgHex);
+          return;
+        }
+        const nextUrl = candidates[idx++];
+        imgEl.onerror = tryNext;
+        imgEl.src = nextUrl;
+      };
+      tryNext();
+    }
+
+    function initRepoMediaAssets() {
+      // Header logo: LogoWithoutBG.png first, then logo.webp, then SVG mark
+      const logoImg = document.getElementById('nordbau-logo-img');
+      if (logoImg) {
+        const logoCandidates = [
+          './images/LogoWithoutBG.png',
+          'images/LogoWithoutBG.png',
+          './images/logo.webp',
+          'images/logo.webp'
+        ];
+        let lIdx = 0;
+        const tryLogo = () => {
+          if (lIdx >= logoCandidates.length) {
+            logoImg.style.display = 'none';
+            const fb = document.getElementById('nordbau-svg-fallback');
+            if (fb) fb.style.display = 'block';
+            return;
+          }
+          logoImg.onerror = tryLogo;
+          logoImg.src = logoCandidates[lIdx++];
+        };
+        tryLogo();
+      }
+
+      // Staff portraits from ./images/
+      loadResilientImage(document.getElementById('staff-img-0'), ['Kianoosh-Nouri.webp'], 'Kianoosh Nouri · CEO');
+      loadResilientImage(document.getElementById('staff-img-1'), ['Mahsa-Ershadi.webp'], 'Mahsa Ershadi');
+      loadResilientImage(document.getElementById('staff-img-2'), ['Amirhossein-Barati.webp'], 'Amirhossein Barati');
+      loadResilientImage(document.getElementById('staff-img-3'), ['Robin.webp'], 'Robin');
+      loadResilientImage(document.getElementById('staff-img-4'), ['Mo.-Najafi.webp'], 'Mo. Najafi');
+
+      // Hero video from ./images/logo-anim.mp4 with Logo.mp4 & remote fallback
+      const vid = document.getElementById('hero-video');
+      if (vid) {
+        const videoSources = [
+          './images/logo-anim.mp4',
+          'images/logo-anim.mp4',
+          './images/Logo.mp4',
+          'images/Logo.mp4',
+          'https://cdn.sceneai.art/Hero%20Section%20Video/adec243d-ffda-48cf-a8a8-26e6d6bcbe9b.mp4'
+        ];
+        let vIdx = 0;
+        const tryVideo = () => {
+          if (vIdx >= videoSources.length) return;
+          vid.src = videoSources[vIdx++];
+          vid.load();
+          const p = vid.play();
+          if (p && typeof p.catch === 'function') p.catch(() => {});
+        };
+        vid.addEventListener('error', tryVideo);
+        tryVideo();
+      }
+
+      // Initialize Before / After gallery with ./images/ assets + architectural fallbacks
+      selectBeforeAfterCase(0, document.querySelector('.project-option-btn'));
+    }
+
+    // -----------------------------------------------------------------------
+    // 2. WORD-BY-WORD "wordIn" ANIMATION RENDERER
     // -----------------------------------------------------------------------
     function buildWords(container, lines, startDelay, stepDelay, duration) {
       if (!container) return;
@@ -1846,28 +1982,35 @@
     }
 
     // -----------------------------------------------------------------------
-    // 2. BILINGUAL COPY (DE / EN, DEFAULT EN)
+    // 3. MULTILINGUAL COPY (EN / DE / FA, DEFAULT EN)
     // -----------------------------------------------------------------------
     const COPY = {
       en: {
+        dir: 'ltr',
         nav_home: 'HOME',
-        nav_renovation: 'RENOVATION',
-        nav_calculator: 'CALCULATOR',
+        nav_3d: '3D STUDIO',
+        nav_renovation: 'BEFORE / AFTER',
+        nav_calculator: 'ESTIMATOR',
         nav_team: 'TEAM',
-        btn_book_termin: 'BOOK CONSULTATION',
+        btn_book_termin: 'BOOKING',
         h1_word3: 'HAMBURG',
         tagline: [
           'ARCHITECTURAL BATHROOMS &',
           'FULL BUILDING RENOVATIONS',
           'CRAFTED FOR MODERN LIVING.'
         ],
-        explore: ['EXPLORE RENOVATIONS'],
+        explore: ['EXPLORE 3D STUDIO'],
         caption: ['Spaces built to elevate', 'everyday living'],
-        mode_diorama: '3D DIORAMA',
-        mode_space: 'ARCHITECTURAL SPACE',
         light_day: 'DAYLIGHT',
-        light_warm: 'WARM OAK',
+        light_evening: 'EVENING',
+        btn_auto_rotate: 'AUTO-ROTATE',
+        btn_reset_view: 'RESET VIEW',
         load_glb: 'LOAD .GLB',
+        lbl_part: 'PART:',
+        btn_hide_part: 'HIDE / DELETE PART',
+        btn_restore_parts: 'RESTORE ALL',
+        lbl_material: 'MATERIAL:',
+        lbl_color: 'COLOR:',
         ba_heading: ['BEFORE', 'AND', 'AFTER'],
         ba_subcopy: 'Slide across our architectural bathroom and interior transformations in Northern Germany — from dated structural shell to bespoke travertine, oak, and glass.',
         tag_before: 'BEFORE · BESTAND',
@@ -1903,8 +2046,10 @@
         booking_confirm_btn: 'CONFIRM CONSULTATION'
       },
       de: {
+        dir: 'ltr',
         nav_home: 'START',
-        nav_renovation: 'SANIERUNG',
+        nav_3d: '3D-STUDIO',
+        nav_renovation: 'VORHER / NACHHER',
         nav_calculator: 'KALKULATOR',
         nav_team: 'TEAM',
         btn_book_termin: 'TERMIN BUCHEN',
@@ -1914,13 +2059,18 @@
           'KOMPLETT-SANIERUNGEN',
           'FÜR ZEITLOSE WOHNQUALITÄT.'
         ],
-        explore: ['PROJEKTE ENTDECKEN'],
+        explore: ['3D-STUDIO ENTDECKEN'],
         caption: ['Räume, die den Alltag', 'spürbar veredeln'],
-        mode_diorama: '3D-DIORAMA',
-        mode_space: 'ARCHITEKTUR-RAUM',
         light_day: 'TAGESLICHT',
-        light_warm: 'WARME EICHE',
+        light_evening: 'ABENDLICHT',
+        btn_auto_rotate: 'AUTO-DREHUNG',
+        btn_reset_view: 'ANSICHT RESET',
         load_glb: '.GLB LADEN',
+        lbl_part: 'BAUTEIL:',
+        btn_hide_part: 'BAUTEIL AUSBLENDEN',
+        btn_restore_parts: 'ALLE WIEDERHERSTELLEN',
+        lbl_material: 'MATERIAL:',
+        lbl_color: 'FARBE:',
         ba_heading: ['VORHER', 'UND', 'NACHHER'],
         ba_subcopy: 'Vergleichen Sie unsere Badsanierungen und Innenausbauten in Norddeutschland interaktiv — vom Bestand bis zur maßgefertigten Travertin- & Eichenlösung.',
         tag_before: 'VORHER · BESTAND',
@@ -1954,14 +2104,76 @@
         booking_title: 'Beratungstermin vereinbaren',
         booking_desc: 'Wählen Sie Wunschdatum, Zeitfenster und Projektart für Ihre Vor-Ort- oder 3D-Studioberatung.',
         booking_confirm_btn: 'TERMIN VERBINDLICH ANFRAGEN'
+      },
+      fa: {
+        dir: 'rtl',
+        nav_home: 'خانه',
+        nav_3d: 'استودیو سه‌بعدی',
+        nav_renovation: 'قبل و بعد',
+        nav_calculator: 'برآورد هزینه',
+        nav_team: 'تیم ما',
+        btn_book_termin: 'رزرو مشاوره',
+        h1_word3: 'هامبورگ',
+        tagline: [
+          'بازسازی حرفه‌ای حمام و',
+          'طراحی معماری مدرن ساختمان',
+          'با کیفیت ماندگار آلمانی'
+        ],
+        explore: ['مشاهده استودیو سه‌بعدی'],
+        caption: ['فضاهایی ساخته شده برای', 'آرامش روزمره'],
+        light_day: 'نور روز',
+        light_evening: 'نور عصر',
+        btn_auto_rotate: 'چرخش خودکار',
+        btn_reset_view: 'بازنشانی زاویه',
+        load_glb: 'بارگذاری GLB',
+        lbl_part: 'بخش:',
+        btn_hide_part: 'حذف / مخفی کردن بخش',
+        btn_restore_parts: 'بازگردانی همه',
+        lbl_material: 'متریال:',
+        lbl_color: 'رنگ:',
+        ba_heading: ['قبل', 'و', 'بعد'],
+        ba_subcopy: 'اسلایدر را بکشید تا تحول واقعی فضاهای حمام و معماری داخلی در شمال آلمان را از وضعیت اولیه تا اجرای سنگ، بلوط و شیشه ببینید.',
+        tag_before: 'قبل · وضعیت اولیه',
+        tag_after: 'بعد · بازسازی‌شده',
+        select_project_label: 'انتخاب پروژه نمونه',
+        stage_preset_label: 'حالت نمایش مقایسه',
+        split_18: '۱۸٪ قبل',
+        split_50: '۵۰/۵۰ میانه',
+        split_85: '۸۵٪ بعد',
+        calc_heading: ['انتخاب سبک', 'و برآورد', 'هزینه'],
+        calc_subcopy: 'رده طراحی را انتخاب کنید، متراژ را بر حسب مترمربع وارد کنید و بخش‌های بازسازی را تیک بزنید تا حدود هزینه به یورو را ببینید.',
+        area_label: 'متراژ فضا (مترمربع)',
+        tier_label: 'انتخاب رده طراحی',
+        scope_label: 'دامنه بازسازی و اجرا',
+        estimate_title: 'بازه تقریبی سرمایه‌گذاری',
+        calc_book_btn: 'رزرو مشاوره با این برآورد هزینه',
+        team_heading: ['مدیریت', 'و تیم', 'متخصصان'],
+        team_subcopy: 'با مدیریت آقای کیانوش نوری و تیم تخصصی معماری و بازسازی در هامبورگ. با حرکت موس عمق سه‌بعدی را ببینید یا عکس‌ها را تست کنید.',
+        role_0: 'مدیرعامل · مدیریت مجموعه',
+        bio_0: 'مؤسس و مدیرعامل نورد بائو سنتروم در هامبورگ با تمرکز بر بازسازی کلیدتحویل حمام، معماری داخلی و ارتباط با کارفرمایان.',
+        role_1: 'طراحی داخلی و معماری',
+        bio_1: 'طراحی کانسپت فضا، ترکیب سنگ و چوب بلوط گرم، مشاوره طراحی و هماهنگی سبک اجرا.',
+        role_2: 'برنامه‌ریزی فنی و سه‌بعدی',
+        bio_2: 'هماهنگی سازه‌ای و تأسیساتی، دقت مدل‌سازی سه‌بعدی و کنترل کیفیت مراحل اجرا.',
+        role_3: 'مشاوره بازسازی و مشتریان',
+        bio_3: 'راهنمایی کارفرمایان در انتخاب رده بودجه، متریال‌ها، زمان‌بندی پروژه و شفافیت مراحل.',
+        role_4: 'اجرای کارگاه و استادکاری',
+        bio_4: 'نظارت بر تیم‌های اجرایی، عایق‌کاری اصولی، کاشی‌کاری دقیق و تحویل نهایی پروژه.',
+        upload_photo_btn: 'تغییر عکس',
+        cookie_settings_btn: 'تنظیمات کوکی و خبرنامه ایمیلی',
+        booking_title: 'رزرو وقت مشاوره معماری و بازسازی',
+        booking_desc: 'تاریخ، بازه زمانی و نوع پروژه خود را برای مشاوره حضوری یا بررسی سه‌بعدی انتخاب کنید.',
+        booking_confirm_btn: 'ثبت درخواست مشاوره'
       }
     };
 
     function setLanguage(lang) {
       const c = COPY[lang] || COPY.en;
       document.documentElement.lang = lang;
-      document.getElementById('btn-lang-de').classList.toggle('is-active', lang === 'de');
+      document.documentElement.dir = c.dir || 'ltr';
       document.getElementById('btn-lang-en').classList.toggle('is-active', lang === 'en');
+      document.getElementById('btn-lang-de').classList.toggle('is-active', lang === 'de');
+      document.getElementById('btn-lang-fa').classList.toggle('is-active', lang === 'fa');
 
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
@@ -1979,7 +2191,7 @@
     }
 
     // -----------------------------------------------------------------------
-    // 3. INTERSECTION OBSERVER FOR BELOW-THE-FOLD WORD ANIMATIONS
+    // 4. INTERSECTION OBSERVER FOR BELOW-THE-FOLD WORD ANIMATIONS
     // -----------------------------------------------------------------------
     const observer = new IntersectionObserver(
       (entries) => {
@@ -1999,7 +2211,7 @@
     });
 
     // -----------------------------------------------------------------------
-    // 4. DOWNWARD FLOATING / SCROLL PARALLAX + RESILIENT HERO VIDEO
+    // 5. DOWNWARD FLOATING / SCROLL PARALLAX + RESILIENT HERO VIDEO
     // -----------------------------------------------------------------------
     const downwardDriftEl = document.getElementById('hero-downward-drift');
     window.addEventListener(
@@ -2050,20 +2262,26 @@
     }
 
     // -----------------------------------------------------------------------
-    // 5. BEFORE / AFTER RENOVATION SHOWCASE
+    // 6. BEFORE / AFTER RENOVATION SHOWCASE
     // -----------------------------------------------------------------------
     const BA_CASES = [
       {
-        before: 'https://cdn.sceneai.art/Bg%20images/bf2e3004-db02-48a1-8e15-c6a58c158b5c.png',
-        after: 'https://cdn.sceneai.art/Bg%20images/c789ac4d-f2c8-463a-93f6-1f8c6fa09f9a.png'
+        beforeFiles: ['BG_site.jpg'],
+        beforeFallback: 'BEFORE · STRUCTURAL SHELL',
+        afterFiles: ['BG_site_night.jpg'],
+        afterFallback: 'AFTER · ARCHITECTURAL FINISH'
       },
       {
-        before: 'https://cdn.sceneai.art/Bg%20images/dce07180-2db9-45fe-889a-7a11657c6234.png',
-        after: 'https://cdn.sceneai.art/Bg%20images/c789ac4d-f2c8-463a-93f6-1f8c6fa09f9a.png'
+        beforeFiles: ['BG_site_night.jpg'],
+        beforeFallback: 'EVENING ARCHITECTURAL VIEW',
+        afterFiles: ['BG_site.jpg'],
+        afterFallback: 'DAYLIGHT ARCHITECTURAL VIEW'
       },
       {
-        before: 'https://cdn.sceneai.art/Bg%20images/bf2e3004-db02-48a1-8e15-c6a58c158b5c.png',
-        after: 'https://cdn.sceneai.art/Bg%20images/dce07180-2db9-45fe-889a-7a11657c6234.png'
+        beforeFiles: ['BG_site.jpg'],
+        beforeFallback: 'EXISTING BATHROOM LAYOUT',
+        afterFiles: ['BG_site_night.jpg'],
+        afterFallback: 'RENOVATED LUXURY SUITE'
       }
     ];
 
@@ -2075,14 +2293,14 @@
 
     function selectBeforeAfterCase(idx, btnEl) {
       const item = BA_CASES[idx] || BA_CASES[0];
-      document.getElementById('ba-before-img').src = item.before;
-      document.getElementById('ba-after-img').src = item.after;
+      loadResilientImage(document.getElementById('ba-before-img'), item.beforeFiles, item.beforeFallback, '#2C2722', '#D8CFC0');
+      loadResilientImage(document.getElementById('ba-after-img'), item.afterFiles, item.afterFallback, '#1C1B19', '#C4A378');
       document.querySelectorAll('.project-option-btn').forEach((b) => b.classList.remove('is-active'));
       if (btnEl) btnEl.classList.add('is-active');
     }
 
     // -----------------------------------------------------------------------
-    // 6. 3-TIER DESIGN & RENOVATION COST CALCULATOR (EUR €)
+    // 7. 3-TIER DESIGN & RENOVATION COST CALCULATOR (EUR €)
     // -----------------------------------------------------------------------
     const TIERS = {
       basis: { label: 'Basis', minRate: 1350, maxRate: 1750 },
@@ -2135,7 +2353,7 @@
     }
 
     // -----------------------------------------------------------------------
-    // 7. TEAM PHOTO LOCAL FILE PREVIEW UPLOAD
+    // 8. TEAM PHOTO LOCAL FILE PREVIEW UPLOAD & 3D CARD TILT
     // -----------------------------------------------------------------------
     let activeStaffIndex = 0;
 
@@ -2150,6 +2368,7 @@
       const url = URL.createObjectURL(file);
       const img = document.getElementById(`staff-img-${activeStaffIndex}`);
       if (img) {
+        img.onerror = null;
         img.src = url;
       }
     });
@@ -2161,13 +2380,13 @@
       const logoImg = document.getElementById('nordbau-logo-img');
       const fallbackSvg = document.getElementById('nordbau-svg-fallback');
       if (logoImg) {
+        logoImg.onerror = null;
         logoImg.style.display = 'block';
         logoImg.src = url;
       }
       if (fallbackSvg) fallbackSvg.style.display = 'none';
     });
 
-    // 3D tilt hover interaction for team cards
     document.querySelectorAll('[data-tilt-card]').forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -2183,7 +2402,7 @@
     });
 
     // -----------------------------------------------------------------------
-    // 8. CONSULTATION BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
+    // 9. CONSULTATION BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
     // -----------------------------------------------------------------------
     function toggleMobileDrawer() {
       const drawer = document.getElementById('mobile-drawer');
@@ -2203,26 +2422,301 @@
     }
 
     function closeBookingModal() {
-    let scene3d, cam3d, ren3d, ctrl3d, defaultBathGroup, loadedGlbGroup, dirLight3d, warmLight3d, floatingTrimGroup;
-    let userDragging3d = false;
-    let currentThreeMode = 'diorama';
+      document.getElementById('booking-modal').classList.remove('is-open');
+    }
 
-    function setThreeSpaceMode(mode) {
-      currentThreeMode = mode;
-      const isDiorama = mode === 'diorama';
-      document.getElementById('btn-mode-diorama').classList.toggle('is-active', isDiorama);
-      document.getElementById('btn-mode-space').classList.toggle('is-active', !isDiorama);
-      if (defaultBathGroup && !loadedGlbGroup) {
-        defaultBathGroup.visible = isDiorama;
+    function confirmBooking(event) {
+      event.preventDefault();
+      const name = document.getElementById('booking-name').value.trim();
+      const date = document.getElementById('booking-date').value;
+      const slot = document.getElementById('booking-slot').value;
+      const newsletterOpt = document.getElementById('booking-newsletter-opt').checked;
+      document.getElementById('booking-confirmation-msg').textContent =
+        `Consultation request noted for ${name} on ${date} (${slot})${newsletterOpt ? ' · Renovation updates enabled.' : '.'}`;
+    }
+
+    function openCookieBanner() {
+      document.getElementById('cookie-banner').classList.add('is-visible');
+    }
+
+    function hideCookieBanner() {
+      document.getElementById('cookie-banner').classList.remove('is-visible');
+    }
+
+    function saveCookiePreferences(allowMarketing) {
+      const pref3d = document.getElementById('cookie-3d-pref').checked;
+      const marketing = allowMarketing ? document.getElementById('cookie-marketing-pref').checked : false;
+      try {
+        localStorage.setItem('nordbau_consent_v1', JSON.stringify({ essential: true, pref3d, marketing }));
+      } catch (err) {}
+      hideCookieBanner();
+    }
+
+    function acceptAllCookiesAndMarketing() {
+      document.getElementById('cookie-3d-pref').checked = true;
+      document.getElementById('cookie-marketing-pref').checked = true;
+      saveCookiePreferences(true);
+    }
+
+    // -----------------------------------------------------------------------
+    // 10. THREE.JS 3D BATHROOM STUDIO: REALISTIC PARTS, COLOR, MATERIAL & HIDE/DELETE
+    // -----------------------------------------------------------------------
+    let scene3d, cam3d, ren3d, ctrl3d, bathRootGroup, loadedGlbGroup, dirLight3d, warmLight3d, hemiLight3d;
+    let userDragging3d = false;
+    let autoRotate3d = true;
+    let selectableParts = []; // { id, label, obj, visible }
+    let selectedPartId = '';
+
+    function createTileTexture(baseHex, groutHex) {
+      const c = document.createElement('canvas');
+      c.width = 256;
+      c.height = 256;
+      const ctx = c.getContext('2d');
+      ctx.fillStyle = baseHex;
+      ctx.fillRect(0, 0, 256, 256);
+
+      // Subtle stone grain specks
+      for (let i = 0; i < 650; i++) {
+        ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.06)' : 'rgba(20,20,19,0.05)';
+        ctx.fillRect((i * 37) % 256, (i * 73) % 256, 3, 2);
       }
-      if (floatingTrimGroup && !loadedGlbGroup) {
-        floatingTrimGroup.visible = !isDiorama;
+
+      ctx.strokeStyle = groutHex;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(1.5, 1.5, 126.5, 126.5);
+      ctx.strokeRect(129.5, 1.5, 125, 126.5);
+      ctx.strokeRect(1.5, 129.5, 126.5, 125);
+      ctx.strokeRect(129.5, 129.5, 125, 125);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(3, 3);
+      return tex;
+    }
+
+    function registerPart(id, label, obj) {
+      obj.name = id;
+      obj.traverse((child) => {
+        if (child.isMesh) {
+          child.userData.partId = id;
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      selectableParts.push({ id, label, obj, visible: true });
+    }
+
+    function rebuildPartDropdown() {
+      const sel = document.getElementById('part-select');
+      if (!sel) return;
+      sel.innerHTML = '';
+      selectableParts.forEach((p, idx) => {
+        const opt = document.createElement('option');
+        opt.value = p.id;
+        opt.textContent = `${p.label}${p.visible ? '' : ' [HIDDEN]'}`;
+        sel.appendChild(opt);
+        if (idx === 0 && !selectedPartId) selectedPartId = p.id;
+      });
+      if (selectedPartId) sel.value = selectedPartId;
+      syncHideButtonLabel();
+    }
+
+    function selectPartByName(id) {
+      selectedPartId = id;
+      const sel = document.getElementById('part-select');
+      if (sel) sel.value = id;
+      syncHideButtonLabel();
+    }
+
+    function syncHideButtonLabel() {
+      const part = selectableParts.find((p) => p.id === selectedPartId);
+      const btn = document.getElementById('btn-toggle-part');
+      if (!btn || !part) return;
+      const lang = document.documentElement.lang || 'en';
+      if (lang === 'fa') {
+        btn.textContent = part.visible ? 'حذف / مخفی کردن بخش' : 'نمایش مجدد بخش';
+      } else if (lang === 'de') {
+        btn.textContent = part.visible ? 'BAUTEIL AUSBLENDEN' : 'BAUTEIL EINBLENDEN';
+      } else {
+        btn.textContent = part.visible ? 'HIDE / DELETE PART' : 'SHOW PART';
       }
-      if (!loadedGlbGroup) {
-        document.getElementById('stage-readout').textContent = isDiorama
-          ? '3D RENOVATION DIORAMA · DRAG TO ORBIT · SCROLL TO DRIFT'
-          : 'ARCHITECTURAL SPACE FRAME · DRAG TO ORBIT · SCROLL TO DRIFT';
+    }
+
+    function toggleSelectedPartVisibility() {
+      const part = selectableParts.find((p) => p.id === selectedPartId);
+      if (!part) return;
+      part.visible = !part.visible;
+      part.obj.visible = part.visible;
+      rebuildPartDropdown();
+    }
+
+    function restoreAllParts() {
+      selectableParts.forEach((p) => {
+        p.visible = true;
+        p.obj.visible = true;
+      });
+      rebuildPartDropdown();
+    }
+
+    function getSelectedMeshes() {
+      const part = selectableParts.find((p) => p.id === selectedPartId);
+      const meshes = [];
+      if (part && part.obj) {
+        part.obj.traverse((child) => {
+          if (child.isMesh) meshes.push(child);
+        });
       }
+      return meshes;
+    }
+
+    function applyTintColor(hexColor, swatchBtn) {
+      document.querySelectorAll('.swatch-dot').forEach((b) => b.classList.remove('is-active'));
+      if (swatchBtn) swatchBtn.classList.add('is-active');
+
+      const meshes = getSelectedMeshes();
+      meshes.forEach((mesh) => {
+        if (mesh.material && mesh.material.color) {
+          mesh.material.color.setHex(hexColor);
+          mesh.material.needsUpdate = true;
+        }
+      });
+    }
+
+    function applyMaterialPreset(preset) {
+      const meshes = getSelectedMeshes();
+      meshes.forEach((mesh) => {
+        if (!mesh.material) return;
+        if (preset === 'stone') {
+          mesh.material.roughness = 0.52;
+          mesh.material.metalness = 0.05;
+          mesh.material.transparent = false;
+          mesh.material.opacity = 1;
+        } else if (preset === 'oak') {
+          mesh.material.color.setHex(0x9E7E56);
+          mesh.material.roughness = 0.44;
+          mesh.material.metalness = 0.06;
+          mesh.material.transparent = false;
+          mesh.material.opacity = 1;
+        } else if (preset === 'brass') {
+          mesh.material.color.setHex(0xC4A378);
+          mesh.material.roughness = 0.24;
+          mesh.material.metalness = 0.85;
+          mesh.material.transparent = false;
+          mesh.material.opacity = 1;
+        } else if (preset === 'glass') {
+          mesh.material.color.setHex(0xE8F1F3);
+          mesh.material.roughness = 0.08;
+          mesh.material.metalness = 0.1;
+          mesh.material.transparent = true;
+          mesh.material.opacity = 0.34;
+        }
+        mesh.material.needsUpdate = true;
+      });
+    }
+
+    function buildDetailedBathroomScene() {
+      bathRootGroup = new THREE.Group();
+      scene3d.add(bathRootGroup);
+      selectableParts = [];
+      selectedPartId = '';
+
+      const tileTex = createTileTexture('#DDD4C4', '#B8AE9E');
+      const stoneMat = new THREE.MeshStandardMaterial({ color: 0xDDD4C4, map: tileTex, roughness: 0.48, metalness: 0.04 });
+      const oakMat = new THREE.MeshStandardMaterial({ color: 0x9E7E56, roughness: 0.42, metalness: 0.06 });
+      const brassMat = new THREE.MeshStandardMaterial({ color: 0xC4A378, roughness: 0.24, metalness: 0.85 });
+      const ceramicMat = new THREE.MeshStandardMaterial({ color: 0xF8F5EE, roughness: 0.16, metalness: 0.04 });
+      const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xE6F0F2, transparent: true, opacity: 0.28, roughness: 0.08 });
+      const ledMat = new THREE.MeshStandardMaterial({ color: 0xFFF2D6, emissive: 0xFFD996, emissiveIntensity: 1.25, roughness: 0.2 });
+
+      // 1. Stone Tile Floor & Structural Base Slab
+      const floorGroup = new THREE.Group();
+      const slab = new THREE.Mesh(new THREE.BoxGeometry(3.8, 0.18, 3.2), stoneMat);
+      slab.position.set(0, -0.09, 0);
+      const trim = new THREE.Mesh(new THREE.BoxGeometry(3.84, 0.05, 3.24), oakMat);
+      trim.position.set(0, -0.19, 0);
+      floorGroup.add(slab, trim);
+      bathRootGroup.add(floorGroup);
+      registerPart('floor_slab', 'Stone Floor & Plinth', floorGroup);
+
+      // 2. Back & Side Architectural Walls with Window Frame
+      const wallsGroup = new THREE.Group();
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.55, 0.16), stoneMat);
+      backWall.position.set(0, 1.275, -1.52);
+      const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.16, 2.55, 3.2), stoneMat);
+      leftWall.position.set(-1.82, 1.275, 0);
+
+      // Window recess frame & pane on back wall
+      const winFrameTop = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.06, 0.22), ceramicMat);
+      winFrameTop.position.set(0.95, 2.02, -1.5);
+      const winFrameBot = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.07, 0.24), ceramicMat);
+      winFrameBot.position.set(0.95, 1.02, -1.49);
+      const winFrameL = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.0, 0.22), ceramicMat);
+      winFrameL.position.set(0.5, 1.52, -1.5);
+      const winFrameR = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.0, 0.22), ceramicMat);
+      winFrameR.position.set(1.4, 1.52, -1.5);
+      const winGlass = new THREE.Mesh(new THREE.PlaneGeometry(0.84, 0.94), new THREE.MeshBasicMaterial({ color: 0xFFF9EC }));
+      winGlass.position.set(0.95, 1.52, -1.43);
+
+      wallsGroup.add(backWall, leftWall, winFrameTop, winFrameBot, winFrameL, winFrameR, winGlass);
+      bathRootGroup.add(wallsGroup);
+      registerPart('walls_window', 'Walls & Window', wallsGroup);
+
+      // 3. Floating Warm Oak Vanity + Countertop Basin + Brushed Brass Faucet
+      const vanityGroup = new THREE.Group();
+      const cabinet = new THREE.Mesh(new THREE.BoxGeometry(1.22, 0.42, 0.52), oakMat);
+      cabinet.position.set(-0.52, 0.68, -1.16);
+      const drawerGroove = new THREE.Mesh(new THREE.BoxGeometry(1.18, 0.015, 0.53), brassMat);
+      drawerGroove.position.set(-0.52, 0.68, -1.16);
+      const sinkBowl = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.18, 0.14, 32), ceramicMat);
+      sinkBowl.position.set(-0.52, 0.96, -1.12);
+      const faucetSpout = new THREE.Mesh(new THREE.BoxGeometry(0.035, 0.22, 0.16), brassMat);
+      faucetSpout.position.set(-0.52, 1.02, -1.25);
+      vanityGroup.add(cabinet, drawerGroove, sinkBowl, faucetSpout);
+      bathRootGroup.add(vanityGroup);
+      registerPart('oak_vanity', 'Oak Vanity & Basin', vanityGroup);
+
+      // 4. Backlit Architectural LED Mirror
+      const mirrorGroup = new THREE.Group();
+      const ledBack = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.72, 0.02), ledMat);
+      ledBack.position.set(-0.52, 1.66, -1.41);
+      const mirrorGlass = new THREE.Mesh(new THREE.BoxGeometry(0.88, 0.64, 0.025), new THREE.MeshStandardMaterial({ color: 0xE8ECEF, roughness: 0.08, metalness: 0.75 }));
+      mirrorGlass.position.set(-0.52, 1.66, -1.395);
+      mirrorGroup.add(ledBack, mirrorGlass);
+      bathRootGroup.add(mirrorGroup);
+      registerPart('led_mirror', 'Backlit LED Mirror', mirrorGroup);
+
+      // 5. Walk-In Frameless Glass Shower + Brass Rain Head & Hardware
+      const showerGroup = new THREE.Group();
+      const glassPanel = new THREE.Mesh(new THREE.BoxGeometry(0.025, 2.12, 1.28), glassMat);
+      glassPanel.position.set(0.32, 1.08, -0.84);
+      const topBar = new THREE.Mesh(new THREE.BoxGeometry(0.035, 0.035, 1.28), brassMat);
+      topBar.position.set(0.32, 2.15, -0.84);
+      const rainArm = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.03, 0.03), brassMat);
+      rainArm.position.set(0.14, 2.02, -1.38);
+      const rainHead = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.025, 28), brassMat);
+      rainHead.position.set(0.32, 2.0, -1.38);
+      const tray = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.03, 1.28), new THREE.MeshStandardMaterial({ color: 0x2A2825, roughness: 0.55 }));
+      tray.position.set(-0.14, 0.025, -0.84);
+      showerGroup.add(glassPanel, topBar, rainArm, rainHead, tray);
+      bathRootGroup.add(showerGroup);
+      registerPart('glass_shower', 'Walk-In Shower & Brass', showerGroup);
+
+      // 6. Wall-Hung Ceramic WC + Flush Plate
+      const wcGroup = new THREE.Group();
+      const wcConcealed = new THREE.Mesh(new THREE.BoxGeometry(0.54, 1.05, 0.18), stoneMat);
+      wcConcealed.position.set(-1.46, 0.525, -1.36);
+      const wcBowl = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.34, 0.52), ceramicMat);
+      wcBowl.position.set(-1.46, 0.42, -1.04);
+      const wcSeat = new THREE.Mesh(new THREE.BoxGeometry(0.39, 0.045, 0.5), ceramicMat);
+      wcSeat.position.set(-1.46, 0.61, -1.05);
+      const flushPlate = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.16, 0.02), brassMat);
+      flushPlate.position.set(-1.46, 0.92, -1.26);
+      wcGroup.add(wcConcealed, wcBowl, wcSeat, flushPlate);
+      bathRootGroup.add(wcGroup);
+      registerPart('wall_wc', 'Wall-Hung WC', wcGroup);
+
+      rebuildPartDropdown();
     }
 
     function initThreeStage() {
@@ -2231,7 +2725,7 @@
 
       scene3d = new THREE.Scene();
       cam3d = new THREE.PerspectiveCamera(36, 16 / 10, 0.1, 100);
-      cam3d.position.set(5.4, 4.1, 5.5);
+      cam3d.position.set(5.4, 4.1, 5.6);
 
       ren3d = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
       ren3d.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -2240,89 +2734,40 @@
       ren3d.toneMappingExposure = 1.08;
 
       ctrl3d = new THREE.OrbitControls(cam3d, canvas);
-      ctrl3d.target.set(0, 1.0, 0);
+      ctrl3d.target.set(-0.2, 1.0, -0.4);
       ctrl3d.enableDamping = true;
       ctrl3d.dampingFactor = 0.06;
       ctrl3d.addEventListener('start', () => { userDragging3d = true; });
       ctrl3d.addEventListener('end', () => { setTimeout(() => { userDragging3d = false; }, 1600); });
 
-      const hemi = new THREE.HemisphereLight(0xfffaf0, 0x3a342c, 0.9);
-      scene3d.add(hemi);
+      hemiLight3d = new THREE.HemisphereLight(0xFFFAF0, 0x3A342C, 0.92);
+      scene3d.add(hemiLight3d);
 
-      dirLight3d = new THREE.DirectionalLight(0xfff5e4, 1.85);
+      dirLight3d = new THREE.DirectionalLight(0xFFF5E4, 1.85);
       dirLight3d.position.set(-5, 7, 4);
       dirLight3d.castShadow = true;
       scene3d.add(dirLight3d);
 
-      warmLight3d = new THREE.PointLight(0xffcb85, 0.7, 7);
-      warmLight3d.position.set(-0.3, 1.6, -0.8);
+      warmLight3d = new THREE.PointLight(0xFFCB85, 0.85, 7);
+      warmLight3d.position.set(-0.5, 1.65, -1.1);
       scene3d.add(warmLight3d);
 
-      const travertineMat = new THREE.MeshStandardMaterial({ color: 0xd8cfc0, roughness: 0.48 });
-      const oakMat = new THREE.MeshStandardMaterial({ color: 0x9e7e56, roughness: 0.42 });
-      const brassMat = new THREE.MeshStandardMaterial({ color: 0xc4a378, roughness: 0.25, metalness: 0.85 });
-      const ceramicMat = new THREE.MeshStandardMaterial({ color: 0xf7f4ee, roughness: 0.16 });
-      const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xe6f0f2, transparent: true, opacity: 0.28, roughness: 0.08 });
+      buildDetailedBathroomScene();
 
-      defaultBathGroup = new THREE.Group();
-      scene3d.add(defaultBathGroup);
-
-      const floor = new THREE.Mesh(new THREE.BoxGeometry(3.5, 0.15, 2.9), travertineMat);
-      floor.position.set(0, -0.05, 0);
-      floor.receiveShadow = true;
-      defaultBathGroup.add(floor);
-
-      const backWall = new THREE.Mesh(new THREE.BoxGeometry(3.5, 2.45, 0.15), travertineMat);
-      backWall.position.set(0, 1.25, -1.38);
-      backWall.castShadow = true;
-      defaultBathGroup.add(backWall);
-
-      const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.15, 2.45, 2.9), travertineMat);
-      leftWall.position.set(-1.68, 1.25, 0);
-      leftWall.castShadow = true;
-      defaultBathGroup.add(leftWall);
-
-      const vanity = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.42, 0.48), oakMat);
-      vanity.position.set(-0.4, 0.65, -0.95);
-      vanity.castShadow = true;
-      defaultBathGroup.add(vanity);
-
-      const basin = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.17, 0.13, 32), ceramicMat);
-      basin.position.set(-0.4, 0.92, -0.92);
-      defaultBathGroup.add(basin);
-
-      const mirror = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.025, 40), brassMat);
-      mirror.rotation.x = Math.PI / 2;
-      mirror.position.set(-0.4, 1.62, -1.28);
-      defaultBathGroup.add(mirror);
-
-      const showerGlass = new THREE.Mesh(new THREE.BoxGeometry(0.025, 2.1, 1.25), glassMat);
-      showerGlass.position.set(0.45, 1.08, -0.7);
-      defaultBathGroup.add(showerGlass);
-
-      const showerRail = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.03, 1.26), brassMat);
-      showerRail.position.set(0.45, 2.12, -0.7);
-      defaultBathGroup.add(showerRail);
-
-      // Architectural space frame & spatial accent volume for "ARCHITECTURAL SPACE" mode
-      floatingTrimGroup = new THREE.Group();
-      floatingTrimGroup.visible = false;
-      scene3d.add(floatingTrimGroup);
-
-      const frameOuter = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.6, 3.1), brassMat);
-      frameOuter.position.set(0, 1.25, 0);
-      const edges = new THREE.EdgesGeometry(frameOuter.geometry);
-      const wireframe = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xc4a378 }));
-      wireframe.position.copy(frameOuter.position);
-      floatingTrimGroup.add(wireframe);
-
-      const plinth = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.18, 2.5), oakMat);
-      plinth.position.set(0, 0.1, 0);
-      floatingTrimGroup.add(plinth);
-
-      const coreVolume = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.85, 1.1), travertineMat);
-      coreVolume.position.set(-0.55, 1.12, -0.45);
-      floatingTrimGroup.add(coreVolume);
+      // Click-to-select part in 3D canvas
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2();
+      canvas.addEventListener('click', (ev) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = ((ev.clientX - rect.left) / rect.width) * 2 - 1;
+        pointer.y = -((ev.clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(pointer, cam3d);
+        const targets = loadedGlbGroup ? loadedGlbGroup.children : bathRootGroup.children;
+        const hits = raycaster.intersectObjects(targets, true);
+        if (hits.length > 0 && hits[0].object.userData && hits[0].object.userData.partId) {
+          selectPartByName(hits[0].object.userData.partId);
+        }
+      });
 
       function resize3d() {
         const w = canvas.clientWidth;
@@ -2339,11 +2784,11 @@
       function loop() {
         requestAnimationFrame(loop);
         const t = clock.getElapsedTime();
-        const activeObj = loadedGlbGroup || (currentThreeMode === 'diorama' ? defaultBathGroup : floatingTrimGroup);
-        if (!userDragging3d && activeObj) {
-          activeObj.rotation.y = Math.sin(t * 0.35) * 0.15;
+        const activeObj = loadedGlbGroup || bathRootGroup;
+        if (!userDragging3d && autoRotate3d && activeObj) {
+          activeObj.rotation.y = Math.sin(t * 0.35) * 0.16;
           if (!loadedGlbGroup) {
-            activeObj.position.y = Math.sin(t * 1.1) * 0.04;
+            activeObj.position.y = Math.sin(t * 1.1) * 0.035;
           }
         }
         ctrl3d.update();
@@ -2353,13 +2798,26 @@
     }
 
     function setThreeLight(mode) {
-      const warm = mode === 'warm';
-      document.getElementById('btn-3d-day').classList.toggle('is-active', !warm);
-      document.getElementById('btn-3d-warm').classList.toggle('is-active', warm);
-      if (!dirLight3d || !warmLight3d) return;
-      dirLight3d.intensity = warm ? 0.85 : 1.85;
-      dirLight3d.color.setHex(warm ? 0xffcf87 : 0xfff5e4);
-      warmLight3d.intensity = warm ? 2.1 : 0.7;
+      const evening = mode === 'evening';
+      document.getElementById('btn-3d-day').classList.toggle('is-active', !evening);
+      document.getElementById('btn-3d-evening').classList.toggle('is-active', evening);
+      if (!dirLight3d || !warmLight3d || !hemiLight3d) return;
+      dirLight3d.intensity = evening ? 0.55 : 1.85;
+      dirLight3d.color.setHex(evening ? 0x8AA6D6 : 0xFFF5E4);
+      hemiLight3d.intensity = evening ? 0.48 : 0.92;
+      warmLight3d.intensity = evening ? 2.4 : 0.85;
+    }
+
+    function toggleAutoRotate3d() {
+      autoRotate3d = !autoRotate3d;
+      document.getElementById('btn-3d-auto').classList.toggle('is-active', autoRotate3d);
+    }
+
+    function resetThreeCamera() {
+      if (!cam3d || !ctrl3d) return;
+      cam3d.position.set(5.4, 4.1, 5.6);
+      ctrl3d.target.set(-0.2, 1.0, -0.4);
+      ctrl3d.update();
     }
 
     document.getElementById('glb-upload-input').addEventListener('change', (e) => {
@@ -2373,7 +2831,7 @@
       loader.load(
         url,
         (gltf) => {
-          if (defaultBathGroup) scene3d.remove(defaultBathGroup);
+          if (bathRootGroup) scene3d.remove(bathRootGroup);
           if (loadedGlbGroup) scene3d.remove(loadedGlbGroup);
 
           const model = gltf.scene;
@@ -2385,12 +2843,31 @@
           model.position.sub(center.multiplyScalar(scale));
           scene3d.add(model);
           loadedGlbGroup = model;
+
+          selectableParts = [];
+          selectedPartId = '';
+          let idx = 0;
+          model.traverse((child) => {
+            if (child.isMesh) {
+              const partId = `glb_part_${idx++}`;
+              child.userData.partId = partId;
+              child.castShadow = true;
+              child.receiveShadow = true;
+              selectableParts.push({
+                id: partId,
+                label: child.name || `Mesh ${idx}`,
+                obj: child,
+                visible: true
+              });
+            }
+          });
+          rebuildPartDropdown();
           readout.textContent = `ACTIVE .GLB: ${file.name.toUpperCase()}`;
           URL.revokeObjectURL(url);
         },
         undefined,
         () => {
-          readout.textContent = '3D BATHROOM & INTERIOR STAGE · DRAG TO ORBIT';
+          readout.textContent = '3D ARCHITECTURAL BATHROOM · SELECT PART TO EDIT';
           URL.revokeObjectURL(url);
         }
       );
@@ -2398,6 +2875,7 @@
 
     // Boot initialization
     window.addEventListener('load', () => {
+      initRepoMediaAssets();
       setLanguage('en');
       recalculateEstimate();
       initThreeStage();
