@@ -1897,19 +1897,79 @@
       return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
     }
 
+    function expandFileVariants(rawName) {
+      const base = String(rawName || '').trim();
+      const dotIdx = base.lastIndexOf('.');
+      const stem = dotIdx > 0 ? base.slice(0, dotIdx) : base;
+      const ext = dotIdx > 0 ? base.slice(dotIdx) : '';
+      const exts = ['.png', '.jpg', '.jpeg', '.webp'];
+      if (ext && !exts.includes(ext.toLowerCase())) {
+        exts.unshift(ext);
+      } else if (ext) {
+        exts.splice(exts.indexOf(ext.toLowerCase()), 1);
+        exts.unshift(ext);
+      }
+
+      const names = new Set();
+      exts.forEach((e) => {
+        names.add(`${stem}${e}`);
+        names.add(`${stem.toLowerCase()}${e}`);
+        names.add(`${stem.toUpperCase()}${e}`);
+      });
+      return Array.from(names);
+    }
+
     function loadResilientImage(imgEl, fileNames, fallbackLabel, bgHex = '#2C2722', fgHex = '#C4A378') {
       if (!imgEl) return;
+      const rawList = Array.isArray(fileNames) ? fileNames : [fileNames];
       const candidates = [];
-      (Array.isArray(fileNames) ? fileNames : [fileNames]).forEach((name) => {
-        candidates.push(`./images/${name}`);
-        candidates.push(`images/${name}`);
+      const seen = new Set();
+
+      rawList.forEach((entry) => {
+        expandFileVariants(entry).forEach((variant) => {
+          const encoded = encodeURI(variant);
+          [`./images/${variant}`, `images/${variant}`, `./images/${encoded}`, `images/${encoded}`].forEach((path) => {
+            if (!seen.has(path)) {
+              seen.add(path);
+              candidates.push(path);
+            }
+          });
+        });
       });
 
+      imgEl.style.opacity = '0';
       let idx = 0;
+
+      const finishWithSvg = () => {
+        imgEl.onerror = null;
+        imgEl.onload = () => {
+          imgEl.style.opacity = '1';
+        };
+        imgEl.src = makeFallbackDataUrl(fallbackLabel, bgHex, fgHex);
+      };
+
       const tryNext = () => {
         if (idx >= candidates.length) {
-          imgEl.onerror = null;
-          imgEl.src = makeFallbackDataUrl(fallbackLabel, bgHex, fgHex);
+          finishWithSvg();
+          return;
+        }
+        const nextUrl = candidates[idx++];
+        imgEl.onload = () => {
+          if (imgEl.naturalWidth > 0) {
+            imgEl.style.opacity = '1';
+          } else {
+            tryNext();
+          }
+        };
+        imgEl.onerror = () => {
+          tryNext();
+        };
+        imgEl.src = nextUrl;
+      };
+
+      tryNext();
+    }
+
     // Crops top or bottom half of Japandi reference image only as fallback if individual Before_02/After_02 are absent
     function buildCroppedHalfDataUrl(imgElement, half) {
       try {
@@ -1971,11 +2031,27 @@
       loadResilientImage(document.getElementById('staff-img-3'), ['Robin.webp'], 'Robin');
       loadResilientImage(document.getElementById('staff-img-4'), ['Mo.-Najafi.webp'], 'Mo. Najafi');
 
-      // 4 Distinct Before & After Cards in Grid
-      loadResilientImage(document.getElementById('ba-grid-0'), ['Before_01.jpg'], '01 BEFORE 01');
-      loadResilientImage(document.getElementById('ba-grid-1'), ['After_01.jpg'], '02 AFTER 01');
-      loadResilientImage(document.getElementById('ba-grid-2'), ['Before_02.jpg'], '03 BEFORE 02');
-      loadResilientImage(document.getElementById('ba-grid-3'), ['After_02.jpg'], '04 AFTER 02');
+      // 4 Distinct Before & After Cards in Grid (.png prioritized first, with .jpg & Japandi fallbacks)
+      loadResilientImage(
+        document.getElementById('ba-grid-0'),
+        ['Before_01.png', 'Before_01.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        '01 BEFORE 01'
+      );
+      loadResilientImage(
+        document.getElementById('ba-grid-1'),
+        ['After_01.png', 'After_01.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        '02 AFTER 01'
+      );
+      loadResilientImage(
+        document.getElementById('ba-grid-2'),
+        ['Before_02.png', 'Before_02.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        '03 BEFORE 02'
+      );
+      loadResilientImage(
+        document.getElementById('ba-grid-3'),
+        ['After_02.png', 'After_02.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        '04 AFTER 02'
+      );
 
       prepareJapandiSplitHalves();
       updateHeroStaticSegmentImage(0);
@@ -2198,10 +2274,26 @@
     // -----------------------------------------------------------------------
     let activeHeroSegment = 0;
     const HERO_SEGMENTS = [
-      { files: ['Before_01.jpg'], tag: '01 BEFORE 01', label: '01 BEFORE 01' },
-      { files: ['After_01.jpg'], tag: '02 AFTER 01', label: '02 AFTER 01' },
-      { files: ['Before_02.jpg'], tag: '03 BEFORE 02', label: '03 BEFORE 02' },
-      { files: ['After_02.jpg'], tag: '04 AFTER 02', label: '04 AFTER 02' }
+      {
+        files: ['Before_01.png', 'Before_01.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        tag: '01 BEFORE 01',
+        label: '01 BEFORE 01'
+      },
+      {
+        files: ['After_01.png', 'After_01.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        tag: '02 AFTER 01',
+        label: '02 AFTER 01'
+      },
+      {
+        files: ['Before_02.png', 'Before_02.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        tag: '03 BEFORE 02',
+        label: '03 BEFORE 02'
+      },
+      {
+        files: ['After_02.png', 'After_02.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg', 'Small Bathroom Makeover Before and After Idea in Japandi Style.png'],
+        tag: '04 AFTER 02',
+        label: '04 AFTER 02'
+      }
     ];
 
     function updateHeroStaticSegmentImage(idx) {
@@ -2210,6 +2302,16 @@
       const seg = HERO_SEGMENTS[idx] || HERO_SEGMENTS[0];
       if (tagEl) tagEl.textContent = seg.tag;
       if (!img) return;
+      if (idx === 2 && japandiTopDataUrl) {
+        img.style.opacity = '1';
+        img.src = japandiTopDataUrl;
+        return;
+      }
+      if (idx === 3 && japandiBottomDataUrl) {
+        img.style.opacity = '1';
+        img.src = japandiBottomDataUrl;
+        return;
+      }
       loadResilientImage(img, seg.files, seg.label, '#2C2722', '#C4A378');
     }
 
@@ -2239,16 +2341,30 @@
     function applyBeforeAfterImagesForCase(idx) {
       const beforeEl = document.getElementById('ba-before-img');
       const afterEl = document.getElementById('ba-after-img');
+      const japandiFallbacks = [
+        'Small Bathroom Makeover Before and After Idea in Japandi Style.jpg',
+        'Small Bathroom Makeover Before and After Idea in Japandi Style.png'
+      ];
 
       if (idx === 0) {
-        loadResilientImage(beforeEl, ['Before_01.jpg'], '01 BEFORE 01', '#2C2722', '#D8CFC0');
-        loadResilientImage(afterEl, ['After_01.jpg'], '02 AFTER 01', '#1C1B19', '#C4A378');
+        loadResilientImage(beforeEl, ['Before_01.png', 'Before_01.jpg', ...japandiFallbacks], '01 BEFORE 01', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['After_01.png', 'After_01.jpg', ...japandiFallbacks], '02 AFTER 01', '#1C1B19', '#C4A378');
       } else if (idx === 1) {
-        loadResilientImage(beforeEl, ['Before_02.jpg'], '03 BEFORE 02', '#2C2722', '#D8CFC0');
-        loadResilientImage(afterEl, ['After_02.jpg'], '04 AFTER 02', '#1C1B19', '#C4A378');
+        if (japandiTopDataUrl && beforeEl) {
+          beforeEl.style.opacity = '1';
+          beforeEl.src = japandiTopDataUrl;
+        } else {
+          loadResilientImage(beforeEl, ['Before_02.png', 'Before_02.jpg', ...japandiFallbacks], '03 BEFORE 02', '#2C2722', '#D8CFC0');
+        }
+        if (japandiBottomDataUrl && afterEl) {
+          afterEl.style.opacity = '1';
+          afterEl.src = japandiBottomDataUrl;
+        } else {
+          loadResilientImage(afterEl, ['After_02.png', 'After_02.jpg', ...japandiFallbacks], '04 AFTER 02', '#1C1B19', '#C4A378');
+        }
       } else {
-        loadResilientImage(beforeEl, ['Before_01.jpg'], '01 BEFORE 01', '#2C2722', '#D8CFC0');
-        loadResilientImage(afterEl, ['After_02.jpg'], '04 AFTER 02', '#1C1B19', '#C4A378');
+        loadResilientImage(beforeEl, ['Before_01.png', 'Before_01.jpg', ...japandiFallbacks], '01 BEFORE 01', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['After_02.png', 'After_02.jpg', ...japandiFallbacks], '04 AFTER 02', '#1C1B19', '#C4A378');
       }
     }
 
