@@ -211,7 +211,18 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: sepia(0.32) saturate(1.15) contrast(1.08) brightness(0.96);
+      filter: hue-rotate(-14deg) saturate(0.68) brightness(1.04) contrast(1.06);
+      mix-blend-mode: screen;
+    }
+
+    .brand-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px 4px 6px;
+      border-radius: 999px;
+      background: rgba(244, 240, 232, 0.08);
+      border: 1px solid rgba(196, 163, 120, 0.35);
     }
 
     .brand-label {
@@ -979,7 +990,36 @@
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: clamp(14px, 1.8vw, 24px);
+      gap: clamp(16px, 2vw, 28px);
+    }
+
+    .team-card {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transform-style: preserve-3d;
+      transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .team-card--ceo {
+      border-color: rgba(196, 163, 120, 0.72);
+      background: linear-gradient(165deg, #FCF9F4 0%, #F3ECE0 100%);
+      box-shadow: 0 24px 56px rgba(20, 20, 19, 0.11);
+    }
+
+    .team-avatar-frame {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #23201c;
+      border: 1px solid var(--border-brass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateZ(18px);
     }
 
     .team-card {
@@ -1201,6 +1241,7 @@
   <!-- Hidden inputs for custom .GLB model & staff photo local preview -->
   <input type="file" id="glb-upload-input" accept=".glb,.gltf" style="display:none;" />
   <input type="file" id="staff-photo-input" accept="image/*" style="display:none;" />
+  <input type="file" id="brand-logo-input" accept="image/*" style="display:none;" />
 
   <div class="page-canvas">
     <!-- 4 Full-Height Vertical Architectural Grid Lines -->
@@ -1216,17 +1257,29 @@
     ======================================================================== -->
     <section id="top" class="hero-section">
       <header class="site-header">
-        <!-- Left: Custom SVG Monogram Recolored to Warm Champagne Brass & Ivory -->
-        <a href="#top" class="brand-link nav-drop-item" aria-label="Nord Bau Centrum Home">
-          <span class="brand-logo-slot" id="header-logo-slot">
-            <svg id="nordbau-svg-mark" width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1.5" y="2" width="37" height="26" rx="4" stroke="#C4A378" stroke-width="1.6" />
-              <path d="M8 23V7L19 19V7" stroke="#F4F0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M24 23V7H30C32.2 7 33.5 8.3 33.5 10.5C33.5 12.2 32.5 13.4 31 13.8C32.8 14.2 34 15.6 34 17.8C34 20.8 32 23 29.2 23H24Z" stroke="#C4A378" stroke-width="1.8" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span class="brand-label">NORDBAU</span>
-        </a>
+        <!-- Left: Harmonized Nord Bau Logo + Palette Swap / Custom Logo Hook -->
+        <div style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;" class="nav-drop-item">
+          <a href="#top" class="brand-link brand-logo-badge" aria-label="Nord Bau Centrum Home">
+            <span class="brand-logo-slot" id="header-logo-slot">
+              <img
+                id="nordbau-logo-img"
+                class="recolored-logo"
+                src="logo.webp"
+                alt="Nord Bau Centrum Logo"
+                onerror="this.style.display='none'; document.getElementById('nordbau-svg-fallback').style.display='block';"
+              />
+              <svg id="nordbau-svg-fallback" style="display:none;" width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1.5" y="2" width="37" height="26" rx="4" stroke="#C4A378" stroke-width="1.6" />
+                <path d="M8 23V7L19 19V7" stroke="#F4F0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M24 23V7H30C32.2 7 33.5 8.3 33.5 10.5C33.5 12.2 32.5 13.4 31 13.8C32.8 14.2 34 15.6 34 17.8C34 20.8 32 23 29.2 23H24Z" stroke="#C4A378" stroke-width="1.8" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="brand-label">NORDBAU CENTRUM</span>
+          </a>
+          <button type="button" class="chip-btn" onclick="document.getElementById('brand-logo-input').click()" title="Load or swap company logo image">
+            LOGO
+          </button>
+        </div>
 
         <!-- Center Pill Nav (Desktop > 860px) -->
         <nav class="pill-nav" aria-label="Main Navigation">
@@ -1308,9 +1361,11 @@
           <div class="hero-3d-card">
             <div class="hero-3d-topbar">
               <span id="stage-readout" style="color:var(--accent-brass); letter-spacing:0.05em; text-transform:uppercase;">
-                3D BATHROOM &amp; INTERIOR STAGE · DRAG TO ORBIT
+                3D RENOVATION DIORAMA · DRAG TO ORBIT · SCROLL TO DRIFT
               </span>
               <div class="hero-3d-controls">
+                <button type="button" id="btn-mode-diorama" class="chip-btn is-active" onclick="setThreeSpaceMode('diorama')" data-i18n="mode_diorama">3D DIORAMA</button>
+                <button type="button" id="btn-mode-space" class="chip-btn" onclick="setThreeSpaceMode('space')" data-i18n="mode_space">ARCHITECTURAL SPACE</button>
                 <button type="button" id="btn-3d-day" class="chip-btn is-active" onclick="setThreeLight('day')" data-i18n="light_day">DAYLIGHT</button>
                 <button type="button" id="btn-3d-warm" class="chip-btn" onclick="setThreeLight('warm')" data-i18n="light_warm">WARM OAK</button>
                 <button type="button" class="chip-btn chip-btn--brass" onclick="document.getElementById('glb-upload-input').click()" data-i18n="load_glb">LOAD .GLB</button>
@@ -1534,68 +1589,108 @@
       <div class="section-header-flex">
         <h2 class="section-heading" id="team-heading"></h2>
         <p class="section-subcopy" data-i18n="team_subcopy">
-          Meet our leadership and architectural specialists. Click any photo button below to preview your team member photos locally before publishing to GitHub.
+          Led by CEO Kianoosh Nouri and our architectural &amp; renovation specialists in Hamburg. Move across cards for 3D depth or click any photo button to swap portraits locally.
         </p>
       </div>
 
       <div class="team-grid">
-        <!-- Staff Slot 1 -->
-        <article class="lux-panel team-card">
+        <!-- 0: Kianoosh Nouri — CEO / Geschäftsführung -->
+        <article class="lux-panel team-card team-card--ceo" data-tilt-card>
           <div class="team-avatar-frame">
             <img
               id="staff-img-0"
-              src="https://placehold.co/600x450/2C2722/C4A378?text=Leadership+Portrait+01"
-              alt="Managing Director &amp; Lead Architect"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Nord+Bau+Team+01'"
+              src="Kianoosh-Nouri.webp"
+              alt="Kianoosh Nouri — CEO & Geschäftsführung"
+              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Kianoosh+Nouri+%7C+CEO'"
             />
           </div>
-          <div class="team-role" data-i18n="role_0">MANAGING DIRECTOR · ARCHITECTURE</div>
-          <h3 class="team-name">Henrik Lindemann</h3>
+          <div class="team-role" data-i18n="role_0">CEO · GESCHÄFTSFÜHRUNG</div>
+          <h3 class="team-name">Kianoosh Nouri</h3>
           <p class="team-bio" data-i18n="bio_0">
-            Architectural renovation lead overseeing luxury interior conversions, structural planning, and turnkey execution in Northern Germany.
+            Founder &amp; CEO of Nord Bau Centrum in Hamburg, leading turnkey bathroom renovations, luxury interior architecture, and client partnerships.
           </p>
           <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(0)" data-i18n="upload_photo_btn">
-            Upload Staff Photo
+            Update Photo
           </button>
         </article>
 
-        <!-- Staff Slot 2 -->
-        <article class="lux-panel team-card">
+        <!-- 1: Mahsa Ershadi -->
+        <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img
               id="staff-img-1"
-              src="https://placehold.co/600x450/2C2722/C4A378?text=Interior+Design+02"
-              alt="Head of 3D Spatial &amp; Material Design"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Nord+Bau+Team+02'"
+              src="Mahsa-Ershadi.webp"
+              alt="Mahsa Ershadi — Interior & Design Specialist"
+              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Mahsa+Ershadi'"
             />
           </div>
-          <div class="team-role" data-i18n="role_1">HEAD OF 3D &amp; BATHROOM DESIGN</div>
-          <h3 class="team-name">Miriam Kowalski</h3>
+          <div class="team-role" data-i18n="role_1">INTERIOR ARCHITECTURE &amp; DESIGN</div>
+          <h3 class="team-name">Mahsa Ershadi</h3>
           <p class="team-bio" data-i18n="bio_1">
-            Specializes in bespoke bathroom architecture, natural stone &amp; oak pairing, lighting atmosphere, and interactive 3D visualization.
+            Curates bespoke spatial concepts, stone &amp; warm oak palettes, client consultations, and tailored renovation styling.
           </p>
           <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(1)" data-i18n="upload_photo_btn">
-            Upload Staff Photo
+            Update Photo
           </button>
         </article>
 
-        <!-- Staff Slot 3 -->
-        <article class="lux-panel team-card">
+        <!-- 2: Amirhossein Barati -->
+        <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img
               id="staff-img-2"
-              src="https://placehold.co/600x450/2C2722/C4A378?text=Site+Management+03"
-              alt="Senior Project &amp; Site Director"
-              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Nord+Bau+Team+03'"
+              src="Amirhossein-Barati.webp"
+              alt="Amirhossein Barati — Project & Technical Lead"
+              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Amirhossein+Barati'"
             />
           </div>
-          <div class="team-role" data-i18n="role_2">SENIOR SITE &amp; CRAFTSMANSHIP LEAD</div>
-          <h3 class="team-name">Lukas Brandt</h3>
+          <div class="team-role" data-i18n="role_2">TECHNICAL PLANNING &amp; EXECUTION</div>
+          <h3 class="team-name">Amirhossein Barati</h3>
           <p class="team-bio" data-i18n="bio_2">
-            Coordinates master tradespeople, precision tiling, wet-room sealing standards, and on-schedule project handover.
+            Drives structural coordination, 3D spatial precision, building installations, and quality assurance across renovation phases.
           </p>
           <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(2)" data-i18n="upload_photo_btn">
-            Upload Staff Photo
+            Update Photo
+          </button>
+        </article>
+
+        <!-- 3: Robin -->
+        <article class="lux-panel team-card" data-tilt-card>
+          <div class="team-avatar-frame">
+            <img
+              id="staff-img-3"
+              src="Robin.webp"
+              alt="Robin — Renovation & Client Advisor"
+              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Robin'"
+            />
+          </div>
+          <div class="team-role" data-i18n="role_3">RENOVATION &amp; CLIENT ADVISORY</div>
+          <h3 class="team-name">Robin</h3>
+          <p class="team-bio" data-i18n="bio_3">
+            Guides homeowners through budget tiers, material selections, scheduling milestones, and transparent project communication.
+          </p>
+          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(3)" data-i18n="upload_photo_btn">
+            Update Photo
+          </button>
+        </article>
+
+        <!-- 4: Mo. Najafi -->
+        <article class="lux-panel team-card" data-tilt-card>
+          <div class="team-avatar-frame">
+            <img
+              id="staff-img-4"
+              src="Mo.-Najafi.webp"
+              alt="Mo. Najafi — Master Craft & Site Operations"
+              onerror="this.src='https://placehold.co/600x450/2C2722/C4A378?text=Mo.+Najafi'"
+            />
+          </div>
+          <div class="team-role" data-i18n="role_4">SITE OPERATIONS &amp; CRAFTSMANSHIP</div>
+          <h3 class="team-name">Mo. Najafi</h3>
+          <p class="team-bio" data-i18n="bio_4">
+            Oversees on-site trades, precision wet-room &amp; tile workmanship, safety compliance, and final handover standards.
+          </p>
+          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(4)" data-i18n="upload_photo_btn">
+            Update Photo
           </button>
         </article>
       </div>
@@ -1768,6 +1863,8 @@
         ],
         explore: ['EXPLORE RENOVATIONS'],
         caption: ['Spaces built to elevate', 'everyday living'],
+        mode_diorama: '3D DIORAMA',
+        mode_space: 'ARCHITECTURAL SPACE',
         light_day: 'DAYLIGHT',
         light_warm: 'WARM OAK',
         load_glb: 'LOAD .GLB',
@@ -1788,14 +1885,18 @@
         estimate_title: 'ESTIMATED INVESTMENT RANGE',
         calc_book_btn: 'BOOK CONSULTATION WITH THIS ESTIMATE',
         team_heading: ['LEADERSHIP', '& STUDIO', 'TEAM'],
-        team_subcopy: 'Meet our leadership and architectural specialists. Click any photo button below to preview your team member photos locally before publishing to GitHub.',
-        role_0: 'MANAGING DIRECTOR · ARCHITECTURE',
-        bio_0: 'Architectural renovation lead overseeing luxury interior conversions, structural planning, and turnkey execution in Northern Germany.',
-        role_1: 'HEAD OF 3D & BATHROOM DESIGN',
-        bio_1: 'Specializes in bespoke bathroom architecture, natural stone & oak pairing, lighting atmosphere, and interactive 3D visualization.',
-        role_2: 'SENIOR SITE & CRAFTSMANSHIP LEAD',
-        bio_2: 'Coordinates master tradespeople, precision tiling, wet-room sealing standards, and on-schedule project handover.',
-        upload_photo_btn: 'Upload Staff Photo',
+        team_subcopy: 'Led by CEO Kianoosh Nouri and our architectural & renovation specialists in Hamburg. Move across cards for 3D depth or click any photo button to swap portraits locally.',
+        role_0: 'CEO · GESCHÄFTSFÜHRUNG',
+        bio_0: 'Founder & CEO of Nord Bau Centrum in Hamburg, leading turnkey bathroom renovations, luxury interior architecture, and client partnerships.',
+        role_1: 'INTERIOR ARCHITECTURE & DESIGN',
+        bio_1: 'Curates bespoke spatial concepts, stone & warm oak palettes, client consultations, and tailored renovation styling.',
+        role_2: 'TECHNICAL PLANNING & EXECUTION',
+        bio_2: 'Drives structural coordination, 3D spatial precision, building installations, and quality assurance across renovation phases.',
+        role_3: 'RENOVATION & CLIENT ADVISORY',
+        bio_3: 'Guides homeowners through budget tiers, material selections, scheduling milestones, and transparent project communication.',
+        role_4: 'SITE OPERATIONS & CRAFTSMANSHIP',
+        bio_4: 'Oversees on-site trades, precision wet-room & tile workmanship, safety compliance, and final handover standards.',
+        upload_photo_btn: 'Update Photo',
         cookie_settings_btn: 'COOKIE & NEWSLETTER SETTINGS',
         booking_title: 'Book Architectural Consultation',
         booking_desc: 'Choose your preferred date, time slot, and renovation project type for an on-site or 3D studio consultation.',
@@ -1815,6 +1916,8 @@
         ],
         explore: ['PROJEKTE ENTDECKEN'],
         caption: ['Räume, die den Alltag', 'spürbar veredeln'],
+        mode_diorama: '3D-DIORAMA',
+        mode_space: 'ARCHITEKTUR-RAUM',
         light_day: 'TAGESLICHT',
         light_warm: 'WARME EICHE',
         load_glb: '.GLB LADEN',
@@ -1835,14 +1938,18 @@
         estimate_title: 'GESCHÄTZTER BUDGETRAHMEN',
         calc_book_btn: 'BERATUNGSTERMIN MIT DIESER SCHÄTZUNG BUCHEN',
         team_heading: ['LEITUNG', '& FACH', 'TEAM'],
-        team_subcopy: 'Unser Führungsteam und Bauleitung. Über die Buttons können Sie Mitarbeiterfotos sofort lokal testen, bevor Sie auf GitHub veröffentlichen.',
-        role_0: 'GESCHÄFTSFÜHRUNG · ARCHITEKTUR',
-        bio_0: 'Leitet anspruchsvolle Badsanierungen, Innenausbau und schlüsselfertige Umbauten in Hamburg und Norddeutschland.',
-        role_1: 'LEITUNG 3D-PLANUNG & BADDESIGN',
-        bio_1: 'Verantwortlich für Grundrisskonzepte, Naturstein- & Eichenmaterialität, Lichtdesign und 3D-Visualisierungen.',
-        role_2: 'BAULEITUNG & GEWERKEKOORDINATION',
-        bio_2: 'Steuert Fachhandwerker, Abdichtung nach Norm, Großformatverlegung und termingerechte Übergabe.',
-        upload_photo_btn: 'Mitarbeiterfoto wählen',
+        team_subcopy: 'Unter der Leitung von Geschäftsführer Kianoosh Nouri und unserem Team in Hamburg. Bewegen Sie den Zeiger über Karten für 3D-Tiefe oder tauschen Sie Fotos lokal.',
+        role_0: 'GESCHÄFTSFÜHRUNG · CEO',
+        bio_0: 'Geschäftsführer von Nord Bau Centrum in Hamburg mit Fokus auf schlüsselfertige Badsanierung, Innenarchitektur und partnerschaftliche Bauleitung.',
+        role_1: 'INNENARCHITEKTUR & GESTALTUNG',
+        bio_1: 'Gestaltet harmonische Raumkonzepte, Naturstein- & Eichenmaterialität sowie individuelle Kundenberatung.',
+        role_2: 'TECHNISCHE PLANUNG & 3D-KONZEPT',
+        bio_2: 'Steuert Grundrisslogik, 3D-Raumplanung, haustechnische Koordination und Ausführungsqualität.',
+        role_3: 'SANIERUNGS- & PROJEKTBERATUNG',
+        bio_3: 'Begleitet Bauherren bei Budgetstufen, Materialauswahl, Terminplänen und transparenter Abstimmung.',
+        role_4: 'BAULEITUNG & HANDWERK',
+        bio_4: 'Koordiniert Gewerke vor Ort, fachgerechte Abdichtung, präzise Verlegung und saubere Übergabe.',
+        upload_photo_btn: 'Foto aktualisieren',
         cookie_settings_btn: 'COOKIE- & NEWSLETTER-EINSTELLUNGEN',
         booking_title: 'Beratungstermin vereinbaren',
         booking_desc: 'Wählen Sie Wunschdatum, Zeitfenster und Projektart für Ihre Vor-Ort- oder 3D-Studioberatung.',
@@ -2047,6 +2154,34 @@
       }
     });
 
+    document.getElementById('brand-logo-input').addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const logoImg = document.getElementById('nordbau-logo-img');
+      const fallbackSvg = document.getElementById('nordbau-svg-fallback');
+      if (logoImg) {
+        logoImg.style.display = 'block';
+        logoImg.src = url;
+      }
+      if (fallbackSvg) fallbackSvg.style.display = 'none';
+    });
+
+    // 3D tilt hover interaction for team cards
+    document.querySelectorAll('[data-tilt-card]').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const nx = (e.clientX - rect.left) / rect.width - 0.5;
+        const ny = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.setProperty('--tilt-y', `${(nx * 9).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-x', `${(-ny * 9).toFixed(2)}deg`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+      });
+    });
+
     // -----------------------------------------------------------------------
     // 8. CONSULTATION BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
     // -----------------------------------------------------------------------
@@ -2068,50 +2203,27 @@
     }
 
     function closeBookingModal() {
-      document.getElementById('booking-modal').classList.remove('is-open');
-    }
-
-    function confirmBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById('booking-name').value.trim();
-      const date = document.getElementById('booking-date').value;
-      const slot = document.getElementById('booking-slot').value;
-      const newsletterOpt = document.getElementById('booking-newsletter-opt').checked;
-
-      let note = `Consultation request noted for ${name} on ${date} (${slot}).`;
-      if (newsletterOpt) {
-        note += ' Renovation & design newsletter opt-in recorded.';
-      }
-      document.getElementById('booking-confirmation-msg').textContent = note;
-    }
-
-    function openCookieBanner() {
-      document.getElementById('cookie-banner').classList.add('is-visible');
-    }
-
-    function saveCookiePreferences(includeOptional) {
-      const threeDEnabled = includeOptional ? document.getElementById('cookie-3d-pref').checked : false;
-      const marketingEnabled = includeOptional ? document.getElementById('cookie-marketing-pref').checked : false;
-      try {
-        localStorage.setItem(
-          'nordbau_consent_v1',
-          JSON.stringify({ essential: true, threeD: threeDEnabled, marketing: marketingEnabled })
-        );
-      } catch (err) {}
-      document.getElementById('cookie-banner').classList.remove('is-visible');
-    }
-
-    function acceptAllCookiesAndMarketing() {
-      document.getElementById('cookie-3d-pref').checked = true;
-      document.getElementById('cookie-marketing-pref').checked = true;
-      saveCookiePreferences(true);
-    }
-
-    // -----------------------------------------------------------------------
-    // 9. THREE.JS r128 3D BATHROOM VIEWER + .GLB UPLOADER
-    // -----------------------------------------------------------------------
-    let scene3d, cam3d, ren3d, ctrl3d, defaultBathGroup, loadedGlbGroup, dirLight3d, warmLight3d;
+    let scene3d, cam3d, ren3d, ctrl3d, defaultBathGroup, loadedGlbGroup, dirLight3d, warmLight3d, floatingTrimGroup;
     let userDragging3d = false;
+    let currentThreeMode = 'diorama';
+
+    function setThreeSpaceMode(mode) {
+      currentThreeMode = mode;
+      const isDiorama = mode === 'diorama';
+      document.getElementById('btn-mode-diorama').classList.toggle('is-active', isDiorama);
+      document.getElementById('btn-mode-space').classList.toggle('is-active', !isDiorama);
+      if (defaultBathGroup && !loadedGlbGroup) {
+        defaultBathGroup.visible = isDiorama;
+      }
+      if (floatingTrimGroup && !loadedGlbGroup) {
+        floatingTrimGroup.visible = !isDiorama;
+      }
+      if (!loadedGlbGroup) {
+        document.getElementById('stage-readout').textContent = isDiorama
+          ? '3D RENOVATION DIORAMA · DRAG TO ORBIT · SCROLL TO DRIFT'
+          : 'ARCHITECTURAL SPACE FRAME · DRAG TO ORBIT · SCROLL TO DRIFT';
+      }
+    }
 
     function initThreeStage() {
       const canvas = document.getElementById('nordbau-3d-canvas');
@@ -2192,6 +2304,26 @@
       showerRail.position.set(0.45, 2.12, -0.7);
       defaultBathGroup.add(showerRail);
 
+      // Architectural space frame & spatial accent volume for "ARCHITECTURAL SPACE" mode
+      floatingTrimGroup = new THREE.Group();
+      floatingTrimGroup.visible = false;
+      scene3d.add(floatingTrimGroup);
+
+      const frameOuter = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.6, 3.1), brassMat);
+      frameOuter.position.set(0, 1.25, 0);
+      const edges = new THREE.EdgesGeometry(frameOuter.geometry);
+      const wireframe = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xc4a378 }));
+      wireframe.position.copy(frameOuter.position);
+      floatingTrimGroup.add(wireframe);
+
+      const plinth = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.18, 2.5), oakMat);
+      plinth.position.set(0, 0.1, 0);
+      floatingTrimGroup.add(plinth);
+
+      const coreVolume = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.85, 1.1), travertineMat);
+      coreVolume.position.set(-0.55, 1.12, -0.45);
+      floatingTrimGroup.add(coreVolume);
+
       function resize3d() {
         const w = canvas.clientWidth;
         const h = canvas.clientHeight || 360;
@@ -2207,9 +2339,12 @@
       function loop() {
         requestAnimationFrame(loop);
         const t = clock.getElapsedTime();
-        const activeObj = loadedGlbGroup || defaultBathGroup;
+        const activeObj = loadedGlbGroup || (currentThreeMode === 'diorama' ? defaultBathGroup : floatingTrimGroup);
         if (!userDragging3d && activeObj) {
           activeObj.rotation.y = Math.sin(t * 0.35) * 0.15;
+          if (!loadedGlbGroup) {
+            activeObj.position.y = Math.sin(t * 1.1) * 0.04;
+          }
         }
         ctrl3d.update();
         ren3d.render(scene3d, cam3d);
