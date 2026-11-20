@@ -17,7 +17,7 @@
 
   <style>
     /* =========================================================================
-       1. DESIGN TOKENS: WARM TRAVERTINE, OBSIDIAN CHARCOAL, WARM OAK & BRASS
+       1. DESIGN TOKENS: TRAVERTINE, CHARCOAL, WARM OAK & CHAMPAGNE BRASS
     ========================================================================= */
     :root {
       --bg-obsidian: #141413;
@@ -61,7 +61,7 @@
       text-decoration: none;
     }
 
-    button, input, select {
+    button, input, select, textarea {
       font-family: inherit;
     }
 
@@ -70,7 +70,7 @@
     }
 
     /* =========================================================================
-       2. PAGE CANVAS, AMBIENT WARM GLOW & 4 VERTICAL ARCHITECTURAL GRID LINES
+       2. PAGE CANVAS, WARM GLOW & 4 VERTICAL ARCHITECTURAL GRID LINES
     ========================================================================= */
     .page-canvas {
       position: relative;
@@ -166,7 +166,7 @@
     }
 
     /* =========================================================================
-       4. RESPONSIVE NAVIGATION & HARMONIZED BRAND LOGO
+       4. NAVIGATION & CLEAN BRAND MARK (NO EXTRA "LOGO" BUTTON)
     ========================================================================= */
     .site-header {
       position: relative;
@@ -193,6 +193,10 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      padding: 4px 14px 4px 7px;
+      border-radius: 999px;
+      background: rgba(244, 240, 232, 0.09);
+      border: 1px solid rgba(196, 163, 120, 0.42);
       animation-delay: 0.1s;
     }
 
@@ -200,28 +204,17 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
+      width: 40px;
       height: 30px;
       border-radius: 6px;
       overflow: hidden;
-      background: rgba(244, 240, 232, 0.06);
     }
 
-    .brand-logo-slot img.recolored-logo {
+    .brand-logo-slot img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: sepia(0.35) hue-rotate(-16deg) saturate(0.75) brightness(1.06) contrast(1.05);
-    }
-
-    .brand-logo-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px 4px 6px;
-      border-radius: 999px;
-      background: rgba(244, 240, 232, 0.09);
-      border: 1px solid rgba(196, 163, 120, 0.42);
+      filter: sepia(0.28) hue-rotate(-14deg) saturate(0.8) brightness(1.06);
     }
 
     .brand-label {
@@ -242,7 +235,7 @@
 
     .pill-link {
       height: 40px;
-      padding: 0 14px;
+      padding: 0 15px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 400;
@@ -297,7 +290,7 @@
 
     .lang-btn {
       height: 32px;
-      padding: 0 10px;
+      padding: 0 11px;
       border-radius: 999px;
       border: none;
       background: transparent;
@@ -314,7 +307,7 @@
 
     .header-cta-btn {
       height: 41px;
-      padding: 0 16px;
+      padding: 0 17px;
       border-radius: 999px;
       border: 1px solid rgba(244, 240, 232, 0.85);
       background: transparent;
@@ -359,7 +352,7 @@
       padding: 10px;
       gap: 6px;
       flex-direction: column;
-      background: rgba(24, 23, 21, 0.92);
+      background: rgba(24, 23, 21, 0.94);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(244, 240, 232, 0.25);
@@ -389,7 +382,7 @@
     }
 
     /* =========================================================================
-       5. HERO SECTION: HEADLINE, TAGLINE, 3D STUDIO & VIDEO CARD
+       5. HERO SECTION: HEADLINE, TAGLINE, 3D STUDIO & STATIC SHOWCASE CARD
     ========================================================================= */
     .hero-section {
       position: relative;
@@ -624,18 +617,18 @@
       cursor: grabbing;
     }
 
-    /* Bottom-left hero video card */
-    .hero-video-card {
+    /* Bottom-left static image showcase card (NO <video> element) */
+    .hero-showcase-card {
       position: relative;
       z-index: 6;
-      width: clamp(175px, 18vw, 290px);
+      width: clamp(180px, 18.5vw, 290px);
       margin: clamp(-140px, -11vw, -70px) 0 44px clamp(16px, 2.2vw, 40px);
       opacity: 0;
       transform: translateY(30px) scale(0.97);
-      animation: videoCardIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 2s forwards;
+      animation: showcaseCardIn 1s cubic-bezier(0.2, 0.7, 0.2, 1) 2s forwards;
     }
 
-    @keyframes videoCardIn {
+    @keyframes showcaseCardIn {
       0% {
         opacity: 0;
         transform: translateY(30px) scale(0.97);
@@ -646,7 +639,7 @@
       }
     }
 
-    .hero-video-box {
+    .hero-showcase-box {
       aspect-ratio: 1.7;
       border-radius: clamp(8px, 0.9vw, 14px);
       overflow: hidden;
@@ -655,14 +648,14 @@
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
     }
 
-    .hero-video-box video {
+    .hero-showcase-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .hero-video-caption {
+    .hero-showcase-caption {
       margin-top: 8px;
       font-family: 'Manrope', sans-serif;
       font-weight: 400;
@@ -672,14 +665,14 @@
       color: var(--text-ivory);
     }
 
-    .video-progress-row {
+    .segment-progress-row {
       margin-top: 12px;
       display: flex;
       align-items: center;
       gap: 5px;
     }
 
-    .video-progress-hit {
+    .segment-progress-hit {
       flex: 1;
       height: 14px;
       display: flex;
@@ -690,11 +683,11 @@
       transition: flex 0.6s ease;
     }
 
-    .video-progress-hit.is-active {
+    .segment-progress-hit.is-active {
       flex: 1.7;
     }
 
-    .video-progress-bar {
+    .segment-progress-bar {
       width: 100%;
       height: 3px;
       border-radius: 2px;
@@ -705,7 +698,7 @@
       transition: background 0.6s ease;
     }
 
-    .video-progress-hit.is-active .video-progress-bar {
+    .segment-progress-hit.is-active .segment-progress-bar {
       background: var(--bg-travertine);
     }
 
@@ -715,7 +708,7 @@
     }
 
     /* =========================================================================
-       6. SHARED EDITORIAL SECTION STYLING ON WARM TRAVERTINE (#F4F0E8)
+       6. SHARED EDITORIAL SECTION STYLING ON TRAVERTINE (#F4F0E8)
     ========================================================================= */
     .editorial-section {
       position: relative;
@@ -755,7 +748,7 @@
     }
 
     .section-subcopy {
-      max-width: 540px;
+      max-width: 560px;
       margin: 0;
       font-size: clamp(13.5px, 1.15vw, 16px);
       line-height: 1.6;
@@ -1002,6 +995,41 @@
       color: var(--text-obsidian);
     }
 
+    .client-media-box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px dashed var(--accent-oak);
+    }
+
+    .media-preview-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .media-thumb-card {
+      width: 92px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background: #1C1B19;
+      color: #F4F0E8;
+      font-size: 10px;
+      padding: 4px;
+    }
+
+    .media-thumb-card img,
+    .media-thumb-card video {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+
     .calc-summary-box {
       border-radius: 16px;
       padding: clamp(20px, 2.2vw, 28px);
@@ -1041,7 +1069,7 @@
     }
 
     /* =========================================================================
-       9. TEAM & LEADERSHIP SECTION WITH LOCAL PHOTO UPLOAD PREVIEW SLOTS
+       9. STATIC LEADERSHIP TEAM SECTION (NO PHOTO UPLOAD BUTTON UNDER CARDS)
     ========================================================================= */
     .team-grid {
       display: grid;
@@ -1053,7 +1081,7 @@
       padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       transform-style: preserve-3d;
       transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
       transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
@@ -1109,23 +1137,6 @@
       color: var(--text-muted);
     }
 
-    .upload-photo-btn {
-      align-self: flex-start;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: #fff;
-      color: var(--text-obsidian);
-      font-size: 11.5px;
-      font-weight: 500;
-      transition: background 0.2s ease;
-    }
-
-    .upload-photo-btn:hover {
-      background: var(--bg-obsidian);
-      color: var(--text-ivory);
-    }
-
     /* =========================================================================
        10. FOOTER, CONSULTATION BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
     ========================================================================= */
@@ -1163,7 +1174,7 @@
 
     .modal-box {
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       border-radius: 22px;
       padding: 26px;
       background: var(--bg-travertine);
@@ -1229,7 +1240,7 @@
     /* =========================================================================
        11. RESPONSIVE BREAKPOINTS (TABLET <= 860px & MOBILE <= 640px)
     ========================================================================= */
-    @media (max-width: 980px) {
+    @media (max-width: 860px) {
       .pill-nav,
       .header-cta-btn {
         display: none;
@@ -1238,9 +1249,7 @@
       .hamburger-btn {
         display: inline-flex;
       }
-    }
 
-    @media (max-width: 860px) {
       .hero-tagline {
         margin-left: 0;
         margin-top: 22px;
@@ -1255,7 +1264,7 @@
         margin: 24px auto 0;
       }
 
-      .hero-video-card {
+      .hero-showcase-card {
         margin: 24px clamp(16px, 2.2vw, 40px) 36px;
         width: min(280px, 76vw);
       }
@@ -1277,10 +1286,8 @@
   </style>
 </head>
 <body>
-  <!-- Hidden inputs for custom .GLB model, staff photo & brand logo local preview -->
+  <!-- Hidden input for customer .GLB model upload inside the 3D studio -->
   <input type="file" id="glb-upload-input" accept=".glb,.gltf" style="display:none;" />
-  <input type="file" id="staff-photo-input" accept="image/*" style="display:none;" />
-  <input type="file" id="brand-logo-input" accept="image/*" style="display:none;" />
 
   <div class="page-canvas" id="page-canvas-bg">
     <!-- 4 Full-Height Vertical Architectural Grid Lines -->
@@ -1296,26 +1303,14 @@
     ======================================================================== -->
     <section id="top" class="hero-section">
       <header class="site-header">
-        <!-- Left: Nord Bau Logo from ./images/LogoWithoutBG.png with fallback -->
-        <div style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;" class="nav-drop-item">
-          <a href="#top" class="brand-link brand-logo-badge" aria-label="Nord Bau Centrum Home">
-            <span class="brand-logo-slot" id="header-logo-slot">
-              <img
-                id="nordbau-logo-img"
-                class="recolored-logo"
-                alt="Nord Bau Centrum Logo"
-              />
-              <svg id="nordbau-svg-fallback" style="display:none;" width="40" height="30" viewBox="0 0 40 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="1.5" y="2" width="37" height="26" rx="4" stroke="#C4A378" stroke-width="1.6" />
-                <path d="M8 23V7L19 19V7" stroke="#F4F0E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M24 23V7H30C32.2 7 33.5 8.3 33.5 10.5C33.5 12.2 32.5 13.4 31 13.8C32.8 14.2 34 15.6 34 17.8C34 20.8 32 23 29.2 23H24Z" stroke="#C4A378" stroke-width="1.8" stroke-linejoin="round" />
-              </svg>
+        <!-- Left: Clean Nord Bau Brand Mark (./images/LogoWithoutBG.png -> ./images/logo.webp) -->
+        <div class="nav-drop-item" style="animation-delay:0.1s;">
+          <a href="#top" class="brand-link" aria-label="Nord Bau Centrum Home">
+            <span class="brand-logo-slot">
+              <img id="nordbau-logo-img" alt="Nord Bau Centrum" />
             </span>
             <span class="brand-label">NORDBAU CENTRUM</span>
           </a>
-          <button type="button" class="chip-btn" onclick="document.getElementById('brand-logo-input').click()" title="Load custom logo file">
-            LOGO
-          </button>
         </div>
 
         <!-- Center Pill Nav -->
@@ -1327,18 +1322,17 @@
             </svg>
             <span data-i18n="nav_home">HOME</span>
           </a>
-          <a href="#studio-3d" class="pill-link nav-drop-item" style="animation-delay:0.26s;" data-i18n="nav_3d">3D STUDIO</a>
-          <a href="#before-after" class="pill-link nav-drop-item" style="animation-delay:0.32s;" data-i18n="nav_renovation">BEFORE / AFTER</a>
-          <a href="#cost-calculator" class="pill-link nav-drop-item" style="animation-delay:0.38s;" data-i18n="nav_calculator">ESTIMATOR</a>
-          <a href="#team-section" class="pill-link nav-drop-item" style="animation-delay:0.44s;" data-i18n="nav_team">TEAM</a>
+          <a href="#studio-3d" class="pill-link nav-drop-item" style="animation-delay:0.28s;" data-i18n="nav_3d">3D STUDIO</a>
+          <a href="#before-after" class="pill-link nav-drop-item" style="animation-delay:0.36s;" data-i18n="nav_renovation">BEFORE / AFTER</a>
+          <a href="#cost-calculator" class="pill-link nav-drop-item" style="animation-delay:0.44s;" data-i18n="nav_calculator">ESTIMATOR</a>
+          <a href="#team-section" class="pill-link nav-drop-item" style="animation-delay:0.48s;" data-i18n="nav_team">TEAM</a>
         </nav>
 
-        <!-- Right: EN / DE / FA Toggle + Booking CTA + Mobile Hamburger -->
+        <!-- Right: EN / DE Toggle + Booking CTA + Mobile Hamburger (<=860px) -->
         <div class="header-right">
           <div class="lang-switch nav-drop-item" role="group" aria-label="Language Selector">
             <button type="button" id="btn-lang-en" class="lang-btn is-active" onclick="setLanguage('en')">EN</button>
             <button type="button" id="btn-lang-de" class="lang-btn" onclick="setLanguage('de')">DE</button>
-            <button type="button" id="btn-lang-fa" class="lang-btn" onclick="setLanguage('fa')">FA</button>
           </div>
 
           <button type="button" class="header-cta-btn nav-drop-item" onclick="openBookingModal()" data-i18n="btn_book_termin">
@@ -1355,7 +1349,7 @@
         </div>
       </header>
 
-      <!-- Mobile / Tablet Glass Drawer -->
+      <!-- Mobile / Tablet Glass Drawer (<=860px) -->
       <div id="mobile-drawer" class="mobile-drawer">
         <a href="#top" class="mobile-nav-pill mobile-nav-pill--active" onclick="closeMobileDrawer()" data-i18n="nav_home">HOME</a>
         <a href="#studio-3d" class="mobile-nav-pill" onclick="closeMobileDrawer()" data-i18n="nav_3d">3D STUDIO</a>
@@ -1393,14 +1387,13 @@
         </a>
       </div>
 
-      <!-- INTERACTIVE 3D BATHROOM & ARCHITECTURAL MODEL STAGE (DOWNWARD PARALLAX) -->
+      <!-- INTERACTIVE 3D BATHROOM CUTAWAY & GLB UPLOADER WITH DOWNWARD PARALLAX -->
       <div id="studio-3d" class="hero-3d-wrapper">
         <div class="hero-3d-drift" id="hero-downward-drift">
           <div class="hero-3d-card">
-            <!-- Top Bar: Lighting, Orbit, Load .GLB -->
             <div class="hero-3d-topbar">
               <span id="stage-readout" style="color:var(--accent-brass); letter-spacing:0.04em; text-transform:uppercase;">
-                3D ARCHITECTURAL BATHROOM · CLICK OR SELECT PART TO EDIT
+                3D ARCHITECTURAL BATHROOM CUTAWAY · SELECT OR CLICK PART
               </span>
               <div class="hero-3d-controls">
                 <button type="button" id="btn-3d-day" class="chip-btn is-active" onclick="setThreeLight('day')" data-i18n="light_day">DAYLIGHT</button>
@@ -1411,12 +1404,10 @@
               </div>
             </div>
 
-            <!-- Second Bar: Simple Color Swatches, Material Selector & Hide/Delete/Restore Part -->
             <div class="hero-3d-toolbar">
               <div class="toolbar-group">
                 <span class="toolbar-label" data-i18n="lbl_part">PART:</span>
                 <select id="part-select" class="tool-select" onchange="selectPartByName(this.value)"></select>
-
                 <button type="button" id="btn-toggle-part" class="chip-btn chip-btn--danger" onclick="toggleSelectedPartVisibility()" data-i18n="btn_hide_part">
                   HIDE / DELETE PART
                 </button>
@@ -1430,15 +1421,15 @@
                 <select id="material-preset-select" class="tool-select" onchange="applyMaterialPreset(this.value)">
                   <option value="stone">Limestone / Stone</option>
                   <option value="oak">Warm Oak Wood</option>
-                  <option value="brass">Brushed Brass / Metal</option>
-                  <option value="glass">Clear / Frosted Glass</option>
+                  <option value="brass">Champagne Brass</option>
+                  <option value="glass">Architectural Glass</option>
                 </select>
 
                 <span class="toolbar-label" data-i18n="lbl_color">COLOR:</span>
                 <button type="button" class="swatch-dot is-active" style="background:#D8CFC0;" title="Warm Travertine" onclick="applyTintColor(0xD8CFC0, this)"></button>
-                <button type="button" class="swatch-dot" style="background:#7A7F85;" title="Cool Basalt Grey" onclick="applyTintColor(0x7A7F85, this)"></button>
-                <button type="button" class="swatch-dot" style="background:#C4A378;" title="Brushed Champagne" onclick="applyTintColor(0xC4A378, this)"></button>
-                <button type="button" class="swatch-dot" style="background:#262421;" title="Matte Obsidian" onclick="applyTintColor(0x262421, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#7A7F85;" title="Basalt Grey" onclick="applyTintColor(0x7A7F85, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#C4A378;" title="Champagne Brass" onclick="applyTintColor(0xC4A378, this)"></button>
+                <button type="button" class="swatch-dot" style="background:#262421;" title="Obsidian Charcoal" onclick="applyTintColor(0x262421, this)"></button>
               </div>
             </div>
 
@@ -1447,43 +1438,37 @@
         </div>
       </div>
 
-      <!-- BOTTOM-LEFT VIDEO CARD (uses ./images/logo-anim.mp4 with fallback) -->
-      <aside class="hero-video-card" aria-label="Renovation Reel">
-        <div class="hero-video-box">
-          <video
-            id="hero-video"
-            autoplay
-            muted
-            loop
-            playsinline
-          ></video>
+      <!-- BOTTOM-LEFT STATIC IMAGE SHOWCASE CARD (NO <video> ELEMENT, 4 CLICKABLE SEGMENTS) -->
+      <aside class="hero-showcase-card" aria-label="Architectural Highlights">
+        <div class="hero-showcase-box">
+          <img id="hero-static-card-img" alt="Nord Bau Centrum Architectural Preview" />
         </div>
-        <p class="hero-video-caption" id="video-caption"></p>
-        <div class="video-progress-row" role="tablist" aria-label="Video Progress Segments">
-          <button type="button" class="video-progress-hit is-active" onclick="seekHeroVideo(0)" aria-label="Part 1">
-            <span class="video-progress-bar"></span>
+        <p class="hero-showcase-caption" id="showcase-caption"></p>
+        <div class="segment-progress-row" role="tablist" aria-label="Preview Segments">
+          <button type="button" class="segment-progress-hit is-active" onclick="selectHeroSegment(0)" aria-label="View 1">
+            <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="video-progress-hit" onclick="seekHeroVideo(1)" aria-label="Part 2">
-            <span class="video-progress-bar"></span>
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(1)" aria-label="View 2">
+            <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="video-progress-hit" onclick="seekHeroVideo(2)" aria-label="Part 3">
-            <span class="video-progress-bar"></span>
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(2)" aria-label="View 3">
+            <span class="segment-progress-bar"></span>
           </button>
-          <button type="button" class="video-progress-hit" onclick="seekHeroVideo(3)" aria-label="Part 4">
-            <span class="video-progress-bar"></span>
+          <button type="button" class="segment-progress-hit" onclick="selectHeroSegment(3)" aria-label="View 4">
+            <span class="segment-progress-bar"></span>
           </button>
         </div>
       </aside>
     </section>
 
     <!-- =======================================================================
-         BEFORE / AFTER RENOVATION SHOWCASE WITH INTERACTIVE STAGE SLIDER
+         BEFORE / AFTER RENOVATION SHOWCASE & INTERACTIVE SLIDER
     ======================================================================== -->
     <section id="before-after" class="editorial-section">
       <div class="section-header-flex">
         <h2 class="section-heading" id="ba-heading"></h2>
         <p class="section-subcopy" data-i18n="ba_subcopy">
-          Slide across our architectural bathroom and interior transformations in Northern Germany — from dated structural shell to bespoke travertine, oak, and glass.
+          Slide across our architectural bathroom and interior transformations — top half of our Japandi reference study as BEFORE and bottom half as AFTER, alongside architectural views.
         </p>
       </div>
 
@@ -1492,12 +1477,12 @@
           <img
             id="ba-after-img"
             class="ba-layer-after"
-            alt="Renovated Architectural Space After"
+            alt="Renovated Space After"
           />
           <img
             id="ba-before-img"
             class="ba-layer-before"
-            alt="Existing Space Before Renovation"
+            alt="Existing Space Before"
           />
           <div class="ba-divider-line"></div>
           <div class="ba-handle-knob" aria-hidden="true">↔</div>
@@ -1518,20 +1503,20 @@
         <div class="lux-panel ba-side-panel">
           <div>
             <div style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-oak); margin-bottom:10px;" data-i18n="select_project_label">
-              SELECT REFERENCE PROJECT
+              SELECT RENOVATION CASE
             </div>
             <div class="project-selector-list">
               <button type="button" class="project-option-btn is-active" onclick="selectBeforeAfterCase(0, this)">
-                <div class="project-option-title">01 · Elbchaussee Master Bath &amp; Suite</div>
-                <div class="project-option-sub">14.5 m² · Travertine Slab, Warm Oak &amp; Walk-In Glass</div>
+                <div class="project-option-title">01 · Japandi Bath Makeover (Top / Bottom Study)</div>
+                <div class="project-option-sub">Top half BEFORE existing bath → Bottom half AFTER warm stone &amp; oak</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(1, this)">
-                <div class="project-option-title">02 · Blankenese Villa Evening &amp; Daylight</div>
-                <div class="project-option-sub">38 m² · Full Wet-Room Waterproofing &amp; Brushed Brass</div>
+                <div class="project-option-title">02 · Hamburg Residence Daylight &amp; Evening</div>
+                <div class="project-option-sub">Architectural façade &amp; interior lighting comparison</div>
               </button>
               <button type="button" class="project-option-btn" onclick="selectBeforeAfterCase(2, this)">
-                <div class="project-option-title">03 · Eppendorf Townhouse Spa &amp; Living</div>
-                <div class="project-option-sub">22 m² · Custom Joinery, Concealed Lighting &amp; Stone</div>
+                <div class="project-option-title">03 · Custom Material &amp; Wet-Room Upgrade</div>
+                <div class="project-option-sub">Precision tilework, warm timber &amp; modern sanitary architecture</div>
               </button>
             </div>
           </div>
@@ -1551,13 +1536,13 @@
     </section>
 
     <!-- =======================================================================
-         3-TIER DESIGN & RENOVATION COST CALCULATOR (BASIS / KOMFORT / LUXUS)
+         3-TIER COST ESTIMATOR (BASIS / KOMFORT / LUXUS) + CUSTOMER PHOTO/VIDEO UPLOAD
     ======================================================================== -->
     <section id="cost-calculator" class="editorial-section">
       <div class="section-header-flex">
         <h2 class="section-heading" id="calc-heading"></h2>
         <p class="section-subcopy" data-i18n="calc_subcopy">
-          Select your design tier, enter floor area in square meters (m²), and include renovation scopes for an instant transparent budget estimate in EUR (€).
+          Select your design tier, enter floor area in square meters (m²), and attach photos or videos of your space for a tailored renovation estimate in EUR (€).
         </p>
       </div>
 
@@ -1595,17 +1580,17 @@
             <button type="button" id="tier-basis" class="tier-card" onclick="selectDesignTier('basis')">
               <div class="tier-name">Basis</div>
               <div class="tier-rate">€1,350 – €1,750 / m²</div>
-              <div class="tier-desc">Clean German porcelain tiles, modern sanitary ceramics, tidy waterproofing.</div>
+              <div class="tier-desc">Clean porcelain tiles, modern sanitary ceramics, reliable waterproofing.</div>
             </button>
             <button type="button" id="tier-komfort" class="tier-card is-selected" onclick="selectDesignTier('komfort')">
               <div class="tier-name">Komfort</div>
               <div class="tier-rate">€2,100 – €2,750 / m²</div>
-              <div class="tier-desc">Large-format stone look, warm oak cabinetry, walk-in glass &amp; LED mirror.</div>
+              <div class="tier-desc">Stone-look surfaces, warm oak cabinetry, walk-in glass &amp; LED mirror.</div>
             </button>
             <button type="button" id="tier-luxus" class="tier-card" onclick="selectDesignTier('luxus')">
               <div class="tier-name">Luxus</div>
               <div class="tier-rate">€3,200 – €4,400 / m²</div>
-              <div class="tier-desc">Natural travertine/limestone, bespoke joinery, architectural lighting &amp; 3D twin.</div>
+              <div class="tier-desc">Natural travertine/limestone, bespoke joinery, architectural light &amp; 3D twin.</div>
             </button>
           </div>
 
@@ -1630,6 +1615,22 @@
               <span>Bespoke Oak Vanity &amp; Brass Fixtures</span>
             </label>
           </div>
+
+          <!-- Customer Photo & Video Upload for Price Estimation -->
+          <div class="client-media-box">
+            <label for="calc-client-media-input" style="display:block; font-size:11.5px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--accent-oak); margin-bottom:6px;" data-i18n="calc_upload_label">
+              ATTACH PHOTOS OR VIDEOS OF YOUR SPACE (IMAGES &amp; VIDEOS)
+            </label>
+            <input
+              type="file"
+              id="calc-client-media-input"
+              accept="image/*,video/*"
+              multiple
+              style="font-size:12px; color:var(--text-obsidian); width:100%;"
+              onchange="handleClientMediaUpload(this.files, 'calc-media-preview')"
+            />
+            <div id="calc-media-preview" class="media-preview-strip"></div>
+          </div>
         </div>
 
         <div class="calc-summary-box">
@@ -1641,6 +1642,7 @@
             <p id="calc-breakdown-text" style="margin:12px 0 0; font-size:12.5px; line-height:1.55; color:rgba(244,240,232,0.82);">
               14 m² · Komfort Tier + Selected Renovation Scope (excl. VAT / MwSt.).
             </p>
+            <p id="calc-attached-summary" style="margin:10px 0 0; font-size:12px; color:var(--accent-brass);"></p>
           </div>
 
           <button type="button" class="primary-dark-btn" onclick="openBookingModalWithEstimate()" data-i18n="calc_book_btn">
@@ -1651,18 +1653,17 @@
     </section>
 
     <!-- =======================================================================
-         TEAM & LEADERSHIP SECTION (./images/<Name>.webp + LOCAL UPLOAD OVERRIDE)
+         STATIC LEADERSHIP TEAM SECTION (NO UPLOAD BUTTON UNDER TEAM PHOTOS)
     ======================================================================== -->
     <section id="team-section" class="editorial-section">
       <div class="section-header-flex">
         <h2 class="section-heading" id="team-heading"></h2>
         <p class="section-subcopy" data-i18n="team_subcopy">
-          Led by CEO Kianoosh Nouri and our architectural &amp; renovation specialists in Hamburg. Move across cards for 3D depth or click any photo button to swap portraits locally.
+          Led by CEO Kianoosh Nouri and our architectural &amp; renovation specialists in Hamburg.
         </p>
       </div>
 
       <div class="team-grid">
-        <!-- 0: Kianoosh Nouri — CEO / Geschäftsführung -->
         <article class="lux-panel team-card team-card--ceo" data-tilt-card>
           <div class="team-avatar-frame">
             <img id="staff-img-0" alt="Kianoosh Nouri — CEO & Geschäftsführung" />
@@ -1672,12 +1673,8 @@
           <p class="team-bio" data-i18n="bio_0">
             Founder &amp; CEO of Nord Bau Centrum in Hamburg, leading turnkey bathroom renovations, luxury interior architecture, and client partnerships.
           </p>
-          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(0)" data-i18n="upload_photo_btn">
-            Update Photo
-          </button>
         </article>
 
-        <!-- 1: Mahsa Ershadi -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img id="staff-img-1" alt="Mahsa Ershadi — Interior & Design Specialist" />
@@ -1687,12 +1684,8 @@
           <p class="team-bio" data-i18n="bio_1">
             Curates bespoke spatial concepts, stone &amp; warm oak palettes, client consultations, and tailored renovation styling.
           </p>
-          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(1)" data-i18n="upload_photo_btn">
-            Update Photo
-          </button>
         </article>
 
-        <!-- 2: Amirhossein Barati -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img id="staff-img-2" alt="Amirhossein Barati — Project & Technical Lead" />
@@ -1702,12 +1695,8 @@
           <p class="team-bio" data-i18n="bio_2">
             Drives structural coordination, 3D spatial precision, building installations, and quality assurance across renovation phases.
           </p>
-          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(2)" data-i18n="upload_photo_btn">
-            Update Photo
-          </button>
         </article>
 
-        <!-- 3: Robin -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img id="staff-img-3" alt="Robin — Renovation & Client Advisor" />
@@ -1717,12 +1706,8 @@
           <p class="team-bio" data-i18n="bio_3">
             Guides homeowners through budget tiers, material selections, scheduling milestones, and transparent project communication.
           </p>
-          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(3)" data-i18n="upload_photo_btn">
-            Update Photo
-          </button>
         </article>
 
-        <!-- 4: Mo. Najafi -->
         <article class="lux-panel team-card" data-tilt-card>
           <div class="team-avatar-frame">
             <img id="staff-img-4" alt="Mo. Najafi — Master Craft & Site Operations" />
@@ -1732,15 +1717,12 @@
           <p class="team-bio" data-i18n="bio_4">
             Oversees on-site trades, precision wet-room &amp; tile workmanship, safety compliance, and final handover standards.
           </p>
-          <button type="button" class="upload-photo-btn" onclick="triggerStaffPhotoUpload(4)" data-i18n="upload_photo_btn">
-            Update Photo
-          </button>
         </article>
       </div>
     </section>
 
     <!-- =======================================================================
-         FOOTER WITH CONSULTATION & COOKIE SETTINGS TRIGGERS
+         FOOTER WITH BOOKING & COOKIE / NEWSLETTER CONTROLS
     ======================================================================== -->
     <footer class="site-footer">
       <div>
@@ -1761,18 +1743,18 @@
   </div>
 
   <!-- =========================================================================
-       CONSULTATION BOOKING MODAL ("TERMIN BUCHEN")
+       CONSULTATION BOOKING / CONTACT MODAL WITH CUSTOMER PHOTO & VIDEO UPLOAD
   ========================================================================== -->
   <div id="booking-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
     <div class="modal-box">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
         <h3 id="booking-modal-title" style="margin:0; font-family:'Playfair Display',serif; font-size:25px; font-weight:400;" data-i18n="booking_title">
-          Book Architectural Consultation
+          Book Consultation &amp; Contact
         </h3>
         <button type="button" onclick="closeBookingModal()" aria-label="Close Booking Modal" style="border:none; background:transparent; font-size:24px; color:var(--text-obsidian);">&times;</button>
       </div>
       <p style="margin:0 0 16px; font-size:12.5px; color:var(--text-muted);" data-i18n="booking_desc">
-        Choose your preferred date, time slot, and renovation project type for an on-site or 3D studio consultation.
+        Choose your preferred date, time slot, and attach photos or videos of your space for our team in Hamburg.
       </p>
 
       <form onsubmit="confirmBooking(event)">
@@ -1798,12 +1780,23 @@
           </div>
         </div>
 
-        <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Project Type &amp; Notes</label>
-        <input type="text" id="booking-project" class="form-input" placeholder="Bathroom Renovation / Interior Design / 3D Concept" />
+        <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Project Type &amp; Message</label>
+        <input type="text" id="booking-project" class="form-input" placeholder="Bathroom Renovation / Interior Design / Inquiry" />
+
+        <label style="display:block; font-size:11.5px; font-weight:500; margin-bottom:4px;">Upload Photos or Videos (Images &amp; Videos)</label>
+        <input
+          type="file"
+          id="booking-media-input"
+          accept="image/*,video/*"
+          multiple
+          class="form-input"
+          onchange="handleClientMediaUpload(this.files, 'booking-media-preview')"
+        />
+        <div id="booking-media-preview" class="media-preview-strip" style="margin-bottom:12px;"></div>
 
         <label style="display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--text-muted); margin-bottom:14px;">
           <input type="checkbox" id="booking-newsletter-opt" />
-          <span>Yes, send me seasonal renovation guides, material trend notes, and studio updates.</span>
+          <span>Yes, send me renovation guides, material trend updates, and studio news via email.</span>
         </label>
 
         <button type="submit" class="primary-dark-btn" data-i18n="booking_confirm_btn">CONFIRM CONSULTATION</button>
@@ -1817,15 +1810,13 @@
        DSGVO / GDPR COOKIE CONSENT & MARKETING NEWSLETTER OPT-IN BANNER
   ========================================================================== -->
   <div id="cookie-banner" class="cookie-banner" role="region" aria-label="Cookie and Marketing Preferences">
-    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">
-      <div>
-        <strong style="font-family:'Playfair Display',serif; font-size:17px; font-weight:400; color:var(--accent-brass);">
-          Privacy, Renovation Cookies &amp; Studio Updates (DSGVO / GDPR)
-        </strong>
-        <p style="margin:4px 0 0; font-size:12px; color:rgba(244,240,232,0.8); max-width:680px;">
-          Manage essential site cookies, 3D viewer &amp; project calculator preferences, and optional marketing email updates for architectural &amp; bathroom renovations.
-        </p>
-      </div>
+    <div>
+      <strong style="font-family:'Playfair Display',serif; font-size:17px; font-weight:400; color:var(--accent-brass);">
+        Privacy, Renovation Cookies &amp; Studio Updates (DSGVO / GDPR)
+      </strong>
+      <p style="margin:4px 0 0; font-size:12px; color:rgba(244,240,232,0.8); max-width:680px;">
+        Manage essential site cookies, 3D viewer &amp; m² cost calculator preferences, and optional marketing email updates for architectural &amp; bathroom renovations.
+      </p>
     </div>
 
     <div class="cookie-toggles">
@@ -1851,19 +1842,19 @@
   </div>
 
   <!-- =========================================================================
-       JAVASCRIPT: RESILIENT ASSET LOADER, WORD ANIMATIONS, I18N, 3D STUDIO & FORMS
+       JAVASCRIPT: ASSETS, WORD ANIMATIONS, EN/DE I18N, 3D STUDIO & CLIENT MEDIA
   ========================================================================== -->
   <script>
     // -----------------------------------------------------------------------
-    // 1. RESILIENT MULTI-PATH IMAGE & VIDEO LOADER FOR GITHUB ./images/ FOLDER
+    // 1. RESILIENT LOADER FOR ./images/ ASSETS IN GITHUB REPO
     // -----------------------------------------------------------------------
-    function makeFallbackDataUrl(label, bgHex, fgHex) {
-      const safeText = String(label || 'NORDBAU').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    function makeFallbackDataUrl(label, bgHex = '#2C2722', fgHex = '#C4A378') {
+      const safe = String(label || 'NORDBAU').replace(/&/g, '&amp;').replace(/</g, '&lt;');
       const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
         <rect width="720" height="540" fill="${bgHex}" />
         <rect x="28" y="28" width="664" height="484" rx="18" fill="none" stroke="${fgHex}" stroke-opacity="0.45" stroke-width="2" />
-        <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" font-family="Georgia, serif" font-size="30">${safeText}</text>
-        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" fill-opacity="0.7" font-family="sans-serif" font-size="14" letter-spacing="3">NORDBAU CENTRUM · HAMBURG</text>
+        <text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" font-family="Georgia, serif" font-size="28">${safe}</text>
+        <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="${fgHex}" fill-opacity="0.7" font-family="sans-serif" font-size="13" letter-spacing="3">NORDBAU CENTRUM · HAMBURG</text>
       </svg>`;
       return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
     }
@@ -1883,68 +1874,74 @@
           imgEl.src = makeFallbackDataUrl(fallbackLabel, bgHex, fgHex);
           return;
         }
-        const nextUrl = candidates[idx++];
         imgEl.onerror = tryNext;
-        imgEl.src = nextUrl;
+        imgEl.src = candidates[idx++];
       };
       tryNext();
     }
 
-    function initRepoMediaAssets() {
-      // Header logo: LogoWithoutBG.png first, then logo.webp, then SVG mark
-      const logoImg = document.getElementById('nordbau-logo-img');
-      if (logoImg) {
-        const logoCandidates = [
-          './images/LogoWithoutBG.png',
-          'images/LogoWithoutBG.png',
-          './images/logo.webp',
-          'images/logo.webp'
-        ];
-        let lIdx = 0;
-        const tryLogo = () => {
-          if (lIdx >= logoCandidates.length) {
-            logoImg.style.display = 'none';
-            const fb = document.getElementById('nordbau-svg-fallback');
-            if (fb) fb.style.display = 'block';
-            return;
-          }
-          logoImg.onerror = tryLogo;
-          logoImg.src = logoCandidates[lIdx++];
-        };
-        tryLogo();
+    // Crops top or bottom half of ./images/Small Bathroom Makeover Before and After Idea in Japandi Style.jpg
+    function buildCroppedHalfDataUrl(imgElement, half) {
+      try {
+        if (!imgElement || !imgElement.naturalWidth || !imgElement.naturalHeight) return null;
+        const w = imgElement.naturalWidth;
+        const h = Math.floor(imgElement.naturalHeight / 2);
+        const sy = half === 'bottom' ? imgElement.naturalHeight - h : 0;
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(imgElement, 0, sy, w, h, 0, 0, w, h);
+        return canvas.toDataURL('image/jpeg', 0.92);
+      } catch (err) {
+        return null;
       }
+    }
 
-      // Staff portraits from ./images/
+    let japandiTopDataUrl = null;
+    let japandiBottomDataUrl = null;
+
+    function prepareJapandiSplitHalves() {
+      const probe = new Image();
+      probe.crossOrigin = 'anonymous';
+      probe.onload = () => {
+        japandiTopDataUrl = buildCroppedHalfDataUrl(probe, 'top');
+        japandiBottomDataUrl = buildCroppedHalfDataUrl(probe, 'bottom');
+        if (activeBeforeAfterIndex === 0) {
+          applyBeforeAfterImagesForCase(0);
+        }
+        if (activeHeroSegment === 0) {
+          updateHeroStaticSegmentImage(0);
+        }
+      };
+      probe.onerror = () => {
+        // Fallback if crossOrigin blocks canvas export on local/file mode
+        japandiTopDataUrl = null;
+        japandiBottomDataUrl = null;
+      };
+      probe.src = './images/Small Bathroom Makeover Before and After Idea in Japandi Style.jpg';
+    }
+
+    function initRepoAssets() {
+      // Brand logo: ./images/LogoWithoutBG.png with fallback to ./images/logo.webp
+      loadResilientImage(
+        document.getElementById('nordbau-logo-img'),
+        ['LogoWithoutBG.png', 'logo.webp'],
+        'NB',
+        '#1C1B19',
+        '#C4A378'
+      );
+
+      // Static leadership team portraits
       loadResilientImage(document.getElementById('staff-img-0'), ['Kianoosh-Nouri.webp'], 'Kianoosh Nouri · CEO');
       loadResilientImage(document.getElementById('staff-img-1'), ['Mahsa-Ershadi.webp'], 'Mahsa Ershadi');
       loadResilientImage(document.getElementById('staff-img-2'), ['Amirhossein-Barati.webp'], 'Amirhossein Barati');
       loadResilientImage(document.getElementById('staff-img-3'), ['Robin.webp'], 'Robin');
       loadResilientImage(document.getElementById('staff-img-4'), ['Mo.-Najafi.webp'], 'Mo. Najafi');
 
-      // Hero video from ./images/logo-anim.mp4 with Logo.mp4 & remote fallback
-      const vid = document.getElementById('hero-video');
-      if (vid) {
-        const videoSources = [
-          './images/logo-anim.mp4',
-          'images/logo-anim.mp4',
-          './images/Logo.mp4',
-          'images/Logo.mp4',
-          'https://cdn.sceneai.art/Hero%20Section%20Video/adec243d-ffda-48cf-a8a8-26e6d6bcbe9b.mp4'
-        ];
-        let vIdx = 0;
-        const tryVideo = () => {
-          if (vIdx >= videoSources.length) return;
-          vid.src = videoSources[vIdx++];
-          vid.load();
-          const p = vid.play();
-          if (p && typeof p.catch === 'function') p.catch(() => {});
-        };
-        vid.addEventListener('error', tryVideo);
-        tryVideo();
-      }
-
-      // Initialize Before / After gallery with ./images/ assets + architectural fallbacks
-      selectBeforeAfterCase(0, document.querySelector('.project-option-btn'));
+      prepareJapandiSplitHalves();
+      updateHeroStaticSegmentImage(0);
+      applyBeforeAfterImagesForCase(0);
     }
 
     // -----------------------------------------------------------------------
@@ -1982,11 +1979,10 @@
     }
 
     // -----------------------------------------------------------------------
-    // 3. MULTILINGUAL COPY (EN / DE / FA, DEFAULT EN)
+    // 3. EN / DE LANGUAGE TOGGLE (DEFAULT EN)
     // -----------------------------------------------------------------------
     const COPY = {
       en: {
-        dir: 'ltr',
         nav_home: 'HOME',
         nav_3d: '3D STUDIO',
         nav_renovation: 'BEFORE / AFTER',
@@ -2012,23 +2008,24 @@
         lbl_material: 'MATERIAL:',
         lbl_color: 'COLOR:',
         ba_heading: ['BEFORE', 'AND', 'AFTER'],
-        ba_subcopy: 'Slide across our architectural bathroom and interior transformations in Northern Germany — from dated structural shell to bespoke travertine, oak, and glass.',
+        ba_subcopy: 'Slide across our architectural bathroom and interior transformations — top half of our Japandi reference study as BEFORE and bottom half as AFTER, alongside architectural views.',
         tag_before: 'BEFORE · BESTAND',
         tag_after: 'AFTER · SANIERUNG',
-        select_project_label: 'SELECT REFERENCE PROJECT',
+        select_project_label: 'SELECT RENOVATION CASE',
         stage_preset_label: 'COMPARISON SPLIT PRESET',
         split_18: '18% BEFORE',
         split_50: '50/50 SPLIT',
         split_85: '85% AFTER',
         calc_heading: ['DESIGN', '& COST', 'ESTIMATOR'],
-        calc_subcopy: 'Select your design tier, enter floor area in square meters (m²), and include renovation scopes for an instant transparent budget estimate in EUR (€).',
+        calc_subcopy: 'Select your design tier, enter floor area in square meters (m²), and attach photos or videos of your space for a tailored renovation estimate in EUR (€).',
         area_label: 'AREA SIZE (m²)',
         tier_label: 'CHOOSE DESIGN TIER',
         scope_label: 'RENOVATION & BUILDING SCOPE',
+        calc_upload_label: 'ATTACH PHOTOS OR VIDEOS OF YOUR SPACE (IMAGES & VIDEOS)',
         estimate_title: 'ESTIMATED INVESTMENT RANGE',
         calc_book_btn: 'BOOK CONSULTATION WITH THIS ESTIMATE',
         team_heading: ['LEADERSHIP', '& STUDIO', 'TEAM'],
-        team_subcopy: 'Led by CEO Kianoosh Nouri and our architectural & renovation specialists in Hamburg. Move across cards for 3D depth or click any photo button to swap portraits locally.',
+        team_subcopy: 'Led by CEO Kianoosh Nouri and our architectural & renovation specialists in Hamburg.',
         role_0: 'CEO · GESCHÄFTSFÜHRUNG',
         bio_0: 'Founder & CEO of Nord Bau Centrum in Hamburg, leading turnkey bathroom renovations, luxury interior architecture, and client partnerships.',
         role_1: 'INTERIOR ARCHITECTURE & DESIGN',
@@ -2039,14 +2036,12 @@
         bio_3: 'Guides homeowners through budget tiers, material selections, scheduling milestones, and transparent project communication.',
         role_4: 'SITE OPERATIONS & CRAFTSMANSHIP',
         bio_4: 'Oversees on-site trades, precision wet-room & tile workmanship, safety compliance, and final handover standards.',
-        upload_photo_btn: 'Update Photo',
         cookie_settings_btn: 'COOKIE & NEWSLETTER SETTINGS',
-        booking_title: 'Book Architectural Consultation',
-        booking_desc: 'Choose your preferred date, time slot, and renovation project type for an on-site or 3D studio consultation.',
+        booking_title: 'Book Consultation & Contact',
+        booking_desc: 'Choose your preferred date, time slot, and attach photos or videos of your space for our team in Hamburg.',
         booking_confirm_btn: 'CONFIRM CONSULTATION'
       },
       de: {
-        dir: 'ltr',
         nav_home: 'START',
         nav_3d: '3D-STUDIO',
         nav_renovation: 'VORHER / NACHHER',
@@ -2072,23 +2067,24 @@
         lbl_material: 'MATERIAL:',
         lbl_color: 'FARBE:',
         ba_heading: ['VORHER', 'UND', 'NACHHER'],
-        ba_subcopy: 'Vergleichen Sie unsere Badsanierungen und Innenausbauten in Norddeutschland interaktiv — vom Bestand bis zur maßgefertigten Travertin- & Eichenlösung.',
+        ba_subcopy: 'Vergleichen Sie unsere Badsanierungen — obere Hälfte der Japandi-Studie als VORHER und untere Hälfte als NACHHER, ergänzt durch weitere Architekturansichten.',
         tag_before: 'VORHER · BESTAND',
         tag_after: 'NACHHER · SANIERUNG',
-        select_project_label: 'REFERENZPROJEKT WÄHLEN',
+        select_project_label: 'SANIERUNGSPROJEKT WÄHLEN',
         stage_preset_label: 'ANSICHTS-SCHRITT',
         split_18: '18% VORHER',
         split_50: '50/50 TEILUNG',
         split_85: '85% NACHHER',
         calc_heading: ['DESIGN', '& KOSTEN', 'RECHNER'],
-        calc_subcopy: 'Wählen Sie eine Ausstattungskategorie, geben Sie die Fläche in m² an und ergänzen Sie Leistungen für eine transparente Kostenschätzung in EUR (€).',
+        calc_subcopy: 'Wählen Sie eine Ausstattungskategorie, geben Sie die Fläche in m² an und laden Sie Fotos oder Videos Ihres Raums für eine Kostenschätzung in EUR (€) hoch.',
         area_label: 'FLÄCHE IN QUADRATMETERN (m²)',
         tier_label: 'AUSSTATTUNGSLINIE WÄHLEN',
         scope_label: 'SANIERUNGS- & BAUUMFANG',
+        calc_upload_label: 'FOTOS ODER VIDEOS IHRES RAUMS HOCHLADEN (BILDER & VIDEOS)',
         estimate_title: 'GESCHÄTZTER BUDGETRAHMEN',
         calc_book_btn: 'BERATUNGSTERMIN MIT DIESER SCHÄTZUNG BUCHEN',
         team_heading: ['LEITUNG', '& FACH', 'TEAM'],
-        team_subcopy: 'Unter der Leitung von Geschäftsführer Kianoosh Nouri und unserem Team in Hamburg. Bewegen Sie den Zeiger über Karten für 3D-Tiefe oder tauschen Sie Fotos lokal.',
+        team_subcopy: 'Unter der Leitung von Geschäftsführer Kianoosh Nouri und unserem Team in Hamburg.',
         role_0: 'GESCHÄFTSFÜHRUNG · CEO',
         bio_0: 'Geschäftsführer von Nord Bau Centrum in Hamburg mit Fokus auf schlüsselfertige Badsanierung, Innenarchitektur und partnerschaftliche Bauleitung.',
         role_1: 'INNENARCHITEKTUR & GESTALTUNG',
@@ -2099,81 +2095,18 @@
         bio_3: 'Begleitet Bauherren bei Budgetstufen, Materialauswahl, Terminplänen und transparenter Abstimmung.',
         role_4: 'BAULEITUNG & HANDWERK',
         bio_4: 'Koordiniert Gewerke vor Ort, fachgerechte Abdichtung, präzise Verlegung und saubere Übergabe.',
-        upload_photo_btn: 'Foto aktualisieren',
         cookie_settings_btn: 'COOKIE- & NEWSLETTER-EINSTELLUNGEN',
-        booking_title: 'Beratungstermin vereinbaren',
-        booking_desc: 'Wählen Sie Wunschdatum, Zeitfenster und Projektart für Ihre Vor-Ort- oder 3D-Studioberatung.',
+        booking_title: 'Beratungstermin & Kontakt',
+        booking_desc: 'Wählen Sie Wunschdatum, Zeitfenster und laden Sie Fotos oder Videos Ihres Raums für unser Team in Hamburg hoch.',
         booking_confirm_btn: 'TERMIN VERBINDLICH ANFRAGEN'
-      },
-      fa: {
-        dir: 'rtl',
-        nav_home: 'خانه',
-        nav_3d: 'استودیو سه‌بعدی',
-        nav_renovation: 'قبل و بعد',
-        nav_calculator: 'برآورد هزینه',
-        nav_team: 'تیم ما',
-        btn_book_termin: 'رزرو مشاوره',
-        h1_word3: 'هامبورگ',
-        tagline: [
-          'بازسازی حرفه‌ای حمام و',
-          'طراحی معماری مدرن ساختمان',
-          'با کیفیت ماندگار آلمانی'
-        ],
-        explore: ['مشاهده استودیو سه‌بعدی'],
-        caption: ['فضاهایی ساخته شده برای', 'آرامش روزمره'],
-        light_day: 'نور روز',
-        light_evening: 'نور عصر',
-        btn_auto_rotate: 'چرخش خودکار',
-        btn_reset_view: 'بازنشانی زاویه',
-        load_glb: 'بارگذاری GLB',
-        lbl_part: 'بخش:',
-        btn_hide_part: 'حذف / مخفی کردن بخش',
-        btn_restore_parts: 'بازگردانی همه',
-        lbl_material: 'متریال:',
-        lbl_color: 'رنگ:',
-        ba_heading: ['قبل', 'و', 'بعد'],
-        ba_subcopy: 'اسلایدر را بکشید تا تحول واقعی فضاهای حمام و معماری داخلی در شمال آلمان را از وضعیت اولیه تا اجرای سنگ، بلوط و شیشه ببینید.',
-        tag_before: 'قبل · وضعیت اولیه',
-        tag_after: 'بعد · بازسازی‌شده',
-        select_project_label: 'انتخاب پروژه نمونه',
-        stage_preset_label: 'حالت نمایش مقایسه',
-        split_18: '۱۸٪ قبل',
-        split_50: '۵۰/۵۰ میانه',
-        split_85: '۸۵٪ بعد',
-        calc_heading: ['انتخاب سبک', 'و برآورد', 'هزینه'],
-        calc_subcopy: 'رده طراحی را انتخاب کنید، متراژ را بر حسب مترمربع وارد کنید و بخش‌های بازسازی را تیک بزنید تا حدود هزینه به یورو را ببینید.',
-        area_label: 'متراژ فضا (مترمربع)',
-        tier_label: 'انتخاب رده طراحی',
-        scope_label: 'دامنه بازسازی و اجرا',
-        estimate_title: 'بازه تقریبی سرمایه‌گذاری',
-        calc_book_btn: 'رزرو مشاوره با این برآورد هزینه',
-        team_heading: ['مدیریت', 'و تیم', 'متخصصان'],
-        team_subcopy: 'با مدیریت آقای کیانوش نوری و تیم تخصصی معماری و بازسازی در هامبورگ. با حرکت موس عمق سه‌بعدی را ببینید یا عکس‌ها را تست کنید.',
-        role_0: 'مدیرعامل · مدیریت مجموعه',
-        bio_0: 'مؤسس و مدیرعامل نورد بائو سنتروم در هامبورگ با تمرکز بر بازسازی کلیدتحویل حمام، معماری داخلی و ارتباط با کارفرمایان.',
-        role_1: 'طراحی داخلی و معماری',
-        bio_1: 'طراحی کانسپت فضا، ترکیب سنگ و چوب بلوط گرم، مشاوره طراحی و هماهنگی سبک اجرا.',
-        role_2: 'برنامه‌ریزی فنی و سه‌بعدی',
-        bio_2: 'هماهنگی سازه‌ای و تأسیساتی، دقت مدل‌سازی سه‌بعدی و کنترل کیفیت مراحل اجرا.',
-        role_3: 'مشاوره بازسازی و مشتریان',
-        bio_3: 'راهنمایی کارفرمایان در انتخاب رده بودجه، متریال‌ها، زمان‌بندی پروژه و شفافیت مراحل.',
-        role_4: 'اجرای کارگاه و استادکاری',
-        bio_4: 'نظارت بر تیم‌های اجرایی، عایق‌کاری اصولی، کاشی‌کاری دقیق و تحویل نهایی پروژه.',
-        upload_photo_btn: 'تغییر عکس',
-        cookie_settings_btn: 'تنظیمات کوکی و خبرنامه ایمیلی',
-        booking_title: 'رزرو وقت مشاوره معماری و بازسازی',
-        booking_desc: 'تاریخ، بازه زمانی و نوع پروژه خود را برای مشاوره حضوری یا بررسی سه‌بعدی انتخاب کنید.',
-        booking_confirm_btn: 'ثبت درخواست مشاوره'
       }
     };
 
     function setLanguage(lang) {
       const c = COPY[lang] || COPY.en;
       document.documentElement.lang = lang;
-      document.documentElement.dir = c.dir || 'ltr';
       document.getElementById('btn-lang-en').classList.toggle('is-active', lang === 'en');
       document.getElementById('btn-lang-de').classList.toggle('is-active', lang === 'de');
-      document.getElementById('btn-lang-fa').classList.toggle('is-active', lang === 'fa');
 
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
@@ -2183,15 +2116,16 @@
       document.getElementById('hero-h1-word3').textContent = c.h1_word3;
       buildWords(document.getElementById('hero-tagline'), c.tagline, 1.15, 0.06, 0.7);
       buildWords(document.getElementById('explore-label'), c.explore, 1.85, 0.06, 0.8);
-      buildWords(document.getElementById('video-caption'), c.caption, 2.15, 0.06, 0.7);
+      buildWords(document.getElementById('showcase-caption'), c.caption, 2.15, 0.06, 0.7);
       buildWords(document.getElementById('ba-heading'), c.ba_heading, 0.0, 0.15, 0.9);
       buildWords(document.getElementById('calc-heading'), c.calc_heading, 0.0, 0.15, 0.9);
       buildWords(document.getElementById('team-heading'), c.team_heading, 0.0, 0.15, 0.9);
       recalculateEstimate();
+      syncHideButtonLabel();
     }
 
     // -----------------------------------------------------------------------
-    // 4. INTERSECTION OBSERVER FOR BELOW-THE-FOLD WORD ANIMATIONS
+    // 4. INTERSECTION OBSERVER & DOWNWARD SCROLL PARALLAX
     // -----------------------------------------------------------------------
     const observer = new IntersectionObserver(
       (entries) => {
@@ -2210,9 +2144,6 @@
       if (el) observer.observe(el);
     });
 
-    // -----------------------------------------------------------------------
-    // 5. DOWNWARD FLOATING / SCROLL PARALLAX + RESILIENT HERO VIDEO
-    // -----------------------------------------------------------------------
     const downwardDriftEl = document.getElementById('hero-downward-drift');
     window.addEventListener(
       'scroll',
@@ -2224,83 +2155,97 @@
       { passive: true }
     );
 
-    const heroVideo = document.getElementById('hero-video');
-    const videoHits = Array.from(document.querySelectorAll('.video-progress-hit'));
-
-    function ensureVideoPlays() {
-      if (!heroVideo) return;
-      if (heroVideo.paused || heroVideo.ended) {
-        const res = heroVideo.play();
-        if (res && typeof res.catch === 'function') res.catch(() => {});
-      }
-    }
-
-    ['pause', 'ended', 'stalled'].forEach((evt) => heroVideo.addEventListener(evt, ensureVideoPlays));
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) ensureVideoPlays();
-    });
-    document.addEventListener('touchstart', ensureVideoPlays, { passive: true, once: true });
-    setInterval(ensureVideoPlays, 1000);
-    ensureVideoPlays();
-
-    function trackVideoSegments() {
-      if (heroVideo && heroVideo.duration && !Number.isNaN(heroVideo.duration)) {
-        const progress = Math.max(0, Math.min(0.999, heroVideo.currentTime / heroVideo.duration));
-        const activeIdx = Math.min(3, Math.floor(progress * 4));
-        videoHits.forEach((btn, i) => btn.classList.toggle('is-active', i === activeIdx));
-      }
-      requestAnimationFrame(trackVideoSegments);
-    }
-    requestAnimationFrame(trackVideoSegments);
-
-    function seekHeroVideo(index) {
-      ensureVideoPlays();
-      if (heroVideo && heroVideo.duration && !Number.isNaN(heroVideo.duration)) {
-        heroVideo.currentTime = (index * 0.25 + 0.02) * heroVideo.duration;
-      }
-      videoHits.forEach((btn, i) => btn.classList.toggle('is-active', i === index));
-    }
-
     // -----------------------------------------------------------------------
-    // 6. BEFORE / AFTER RENOVATION SHOWCASE
+    // 5. BOTTOM-LEFT STATIC IMAGE SHOWCASE WITH 4 CLICKABLE SEGMENT BARS
     // -----------------------------------------------------------------------
-    const BA_CASES = [
-      {
-        beforeFiles: ['BG_site.jpg'],
-        beforeFallback: 'BEFORE · STRUCTURAL SHELL',
-        afterFiles: ['BG_site_night.jpg'],
-        afterFallback: 'AFTER · ARCHITECTURAL FINISH'
-      },
-      {
-        beforeFiles: ['BG_site_night.jpg'],
-        beforeFallback: 'EVENING ARCHITECTURAL VIEW',
-        afterFiles: ['BG_site.jpg'],
-        afterFallback: 'DAYLIGHT ARCHITECTURAL VIEW'
-      },
-      {
-        beforeFiles: ['BG_site.jpg'],
-        beforeFallback: 'EXISTING BATHROOM LAYOUT',
-        afterFiles: ['BG_site_night.jpg'],
-        afterFallback: 'RENOVATED LUXURY SUITE'
-      }
+    let activeHeroSegment = 0;
+    const HERO_SEGMENTS = [
+      { files: ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], useTopHalf: true, label: 'Japandi Before' },
+      { files: ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], useBottomHalf: true, label: 'Japandi After' },
+      { files: ['BG_site.jpg'], label: 'Architectural Daylight' },
+      { files: ['BG_site_night.jpg'], label: 'Evening Illumination' }
     ];
+
+    function updateHeroStaticSegmentImage(idx) {
+      const img = document.getElementById('hero-static-card-img');
+      const seg = HERO_SEGMENTS[idx] || HERO_SEGMENTS[0];
+      if (!img) return;
+      if (seg.useTopHalf && japandiTopDataUrl) {
+        img.onerror = null;
+        img.src = japandiTopDataUrl;
+        return;
+      }
+      if (seg.useBottomHalf && japandiBottomDataUrl) {
+        img.onerror = null;
+        img.src = japandiBottomDataUrl;
+        return;
+      }
+      loadResilientImage(img, seg.files, seg.label, '#2C2722', '#C4A378');
+    }
+
+    function selectHeroSegment(idx) {
+      activeHeroSegment = idx;
+      document.querySelectorAll('.segment-progress-hit').forEach((btn, i) => {
+        btn.classList.toggle('is-active', i === idx);
+      });
+      updateHeroStaticSegmentImage(idx);
+    }
+
+    // -----------------------------------------------------------------------
+    // 6. BEFORE / AFTER RENOVATION SHOWCASE (JAPANDI TOP/BOTTOM + CASES)
+    // -----------------------------------------------------------------------
+    let activeBeforeAfterIndex = 0;
 
     function updateBeforeAfterSplit(val) {
       const clamped = Math.max(0, Math.min(100, Number(val) || 50));
       document.getElementById('ba-stage-box').style.setProperty('--split', `${clamped}%`);
       document.getElementById('ba-slider').value = clamped;
+      document.querySelectorAll('.stage-step-btn').forEach((btn) => {
+        const targetVal = Number(btn.getAttribute('onclick').match(/\d+/)[0]);
+        btn.classList.toggle('is-active', Math.abs(targetVal - clamped) <= 2);
+      });
+    }
+
+    function applyBeforeAfterImagesForCase(idx) {
+      const beforeEl = document.getElementById('ba-before-img');
+      const afterEl = document.getElementById('ba-after-img');
+
+      if (idx === 0) {
+        if (japandiTopDataUrl) {
+          beforeEl.onerror = null;
+          beforeEl.src = japandiTopDataUrl;
+        } else {
+          loadResilientImage(beforeEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'BEFORE · TOP HALF', '#2C2722', '#D8CFC0');
+        }
+        if (japandiBottomDataUrl) {
+          afterEl.onerror = null;
+          afterEl.src = japandiBottomDataUrl;
+        } else {
+          loadResilientImage(afterEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'AFTER · BOTTOM HALF', '#1C1B19', '#C4A378');
+        }
+      } else if (idx === 1) {
+        loadResilientImage(beforeEl, ['BG_site.jpg'], 'DAYLIGHT VIEW', '#2C2722', '#D8CFC0');
+        loadResilientImage(afterEl, ['BG_site_night.jpg'], 'EVENING VIEW', '#1C1B19', '#C4A378');
+      } else {
+        if (japandiBottomDataUrl) {
+          beforeEl.onerror = null;
+          beforeEl.src = japandiBottomDataUrl;
+        } else {
+          loadResilientImage(beforeEl, ['Small Bathroom Makeover Before and After Idea in Japandi Style.jpg'], 'JAPANDI CONCEPT', '#2C2722', '#D8CFC0');
+        }
+        loadResilientImage(afterEl, ['BG_site_night.jpg', 'BG_site.jpg'], 'ARCHITECTURAL FINISH', '#1C1B19', '#C4A378');
+      }
     }
 
     function selectBeforeAfterCase(idx, btnEl) {
-      const item = BA_CASES[idx] || BA_CASES[0];
-      loadResilientImage(document.getElementById('ba-before-img'), item.beforeFiles, item.beforeFallback, '#2C2722', '#D8CFC0');
-      loadResilientImage(document.getElementById('ba-after-img'), item.afterFiles, item.afterFallback, '#1C1B19', '#C4A378');
+      activeBeforeAfterIndex = idx;
+      applyBeforeAfterImagesForCase(idx);
       document.querySelectorAll('.project-option-btn').forEach((b) => b.classList.remove('is-active'));
       if (btnEl) btnEl.classList.add('is-active');
     }
 
     // -----------------------------------------------------------------------
-    // 7. 3-TIER DESIGN & RENOVATION COST CALCULATOR (EUR €)
+    // 7. 3-TIER DESIGN & RENOVATION COST CALCULATOR + CLIENT MEDIA UPLOAD
     // -----------------------------------------------------------------------
     const TIERS = {
       basis: { label: 'Basis', minRate: 1350, maxRate: 1750 },
@@ -2311,6 +2256,7 @@
     let selectedTierKey = 'komfort';
     let currentAreaSqm = 14;
     let currentEstimateText = '€35,000 – €44,700';
+    let attachedFileNames = [];
 
     function syncAreaSqm(val) {
       const num = Math.max(1, Math.min(500, Number(val) || 1));
@@ -2343,57 +2289,70 @@
       document.getElementById('calc-price-output').textContent = formatted;
       document.getElementById('calc-breakdown-text').textContent =
         `${currentAreaSqm} m² · ${tier.label} Tier + €${addons.toLocaleString('en-US')} Selected Scope (excl. VAT / MwSt.).`;
+
+      const summaryEl = document.getElementById('calc-attached-summary');
+      summaryEl.textContent = attachedFileNames.length
+        ? `Attached customer files (${attachedFileNames.length}): ${attachedFileNames.join(', ')}`
+        : '';
+    }
+
+    function handleClientMediaUpload(fileList, previewContainerId) {
+      const strip = document.getElementById(previewContainerId);
+      if (!strip || !fileList) return;
+      strip.innerHTML = '';
+      attachedFileNames = [];
+
+      Array.from(fileList).forEach((file) => {
+        attachedFileNames.push(file.name);
+        const url = URL.createObjectURL(file);
+        const card = document.createElement('div');
+        card.className = 'media-thumb-card';
+
+        if (file.type && file.type.startsWith('video/')) {
+          const vid = document.createElement('video');
+          vid.src = url;
+          vid.muted = true;
+          vid.playsInline = true;
+          vid.controls = false;
+          card.appendChild(vid);
+        } else {
+          const img = document.createElement('img');
+          img.src = url;
+          img.alt = file.name;
+          card.appendChild(img);
+        }
+
+        const label = document.createElement('div');
+        label.style.whiteSpace = 'nowrap';
+        label.style.overflow = 'hidden';
+        label.style.textOverflow = 'ellipsis';
+        label.style.marginTop = '4px';
+        label.textContent = file.name;
+        card.appendChild(label);
+        strip.appendChild(card);
+      });
+
+      recalculateEstimate();
     }
 
     function openBookingModalWithEstimate() {
       const tier = TIERS[selectedTierKey] || TIERS.komfort;
+      const mediaNote = attachedFileNames.length ? ` [Files: ${attachedFileNames.join(', ')}]` : '';
       document.getElementById('booking-project').value =
-        `${tier.label} Renovation (${currentAreaSqm} m²) — Est. ${currentEstimateText}`;
+        `${tier.label} Renovation (${currentAreaSqm} m²) — Est. ${currentEstimateText}${mediaNote}`;
       openBookingModal();
     }
 
     // -----------------------------------------------------------------------
-    // 8. TEAM PHOTO LOCAL FILE PREVIEW UPLOAD & 3D CARD TILT
+    // 8. SUBTLE 3D CARD TILT ON TEAM CARDS
     // -----------------------------------------------------------------------
-    let activeStaffIndex = 0;
-
-    function triggerStaffPhotoUpload(index) {
-      activeStaffIndex = index;
-      document.getElementById('staff-photo-input').click();
-    }
-
-    document.getElementById('staff-photo-input').addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      const img = document.getElementById(`staff-img-${activeStaffIndex}`);
-      if (img) {
-        img.onerror = null;
-        img.src = url;
-      }
-    });
-
-    document.getElementById('brand-logo-input').addEventListener('change', (e) => {
-      const file = e.target.files && e.target.files[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      const logoImg = document.getElementById('nordbau-logo-img');
-      const fallbackSvg = document.getElementById('nordbau-svg-fallback');
-      if (logoImg) {
-        logoImg.onerror = null;
-        logoImg.style.display = 'block';
-        logoImg.src = url;
-      }
-      if (fallbackSvg) fallbackSvg.style.display = 'none';
-    });
-
     document.querySelectorAll('[data-tilt-card]').forEach((card) => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const nx = (e.clientX - rect.left) / rect.width - 0.5;
         const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.setProperty('--tilt-y', `${(nx * 9).toFixed(2)}deg`);
-        card.style.setProperty('--tilt-x', `${(-ny * 9).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${(nx * 8).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-x', `${(-ny * 8).toFixed(2)}deg`);
       });
       card.addEventListener('mouseleave', () => {
         card.style.setProperty('--tilt-x', '0deg');
@@ -2402,7 +2361,7 @@
     });
 
     // -----------------------------------------------------------------------
-    // 9. CONSULTATION BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
+    // 9. MOBILE DRAWER, BOOKING MODAL & DSGVO COOKIE + NEWSLETTER BANNER
     // -----------------------------------------------------------------------
     function toggleMobileDrawer() {
       const drawer = document.getElementById('mobile-drawer');
@@ -2431,8 +2390,11 @@
       const date = document.getElementById('booking-date').value;
       const slot = document.getElementById('booking-slot').value;
       const newsletterOpt = document.getElementById('booking-newsletter-opt').checked;
+      const bookingFiles = document.getElementById('booking-media-input').files;
+      const fileCount = bookingFiles ? bookingFiles.length : 0;
+
       document.getElementById('booking-confirmation-msg').textContent =
-        `Consultation request noted for ${name} on ${date} (${slot})${newsletterOpt ? ' · Renovation updates enabled.' : '.'}`;
+        `Consultation request noted for ${name} on ${date} (${slot})${fileCount ? ` with ${fileCount} attached file(s)` : ''}${newsletterOpt ? ' · Marketing updates enabled.' : '.'}`;
     }
 
     function openCookieBanner() {
@@ -2459,12 +2421,12 @@
     }
 
     // -----------------------------------------------------------------------
-    // 10. THREE.JS 3D BATHROOM STUDIO: REALISTIC PARTS, COLOR, MATERIAL & HIDE/DELETE
+    // 10. THREE.JS 3D BATHROOM CUTAWAY & GLB UPLOADER WITH PART CONTROLS
     // -----------------------------------------------------------------------
     let scene3d, cam3d, ren3d, ctrl3d, bathRootGroup, loadedGlbGroup, dirLight3d, warmLight3d, hemiLight3d;
     let userDragging3d = false;
     let autoRotate3d = true;
-    let selectableParts = []; // { id, label, obj, visible }
+    let selectableParts = [];
     let selectedPartId = '';
 
     function createTileTexture(baseHex, groutHex) {
@@ -2475,7 +2437,6 @@
       ctx.fillStyle = baseHex;
       ctx.fillRect(0, 0, 256, 256);
 
-      // Subtle stone grain specks
       for (let i = 0; i < 650; i++) {
         ctx.fillStyle = i % 2 === 0 ? 'rgba(255,255,255,0.06)' : 'rgba(20,20,19,0.05)';
         ctx.fillRect((i * 37) % 256, (i * 73) % 256, 3, 2);
@@ -2533,10 +2494,8 @@
       const part = selectableParts.find((p) => p.id === selectedPartId);
       const btn = document.getElementById('btn-toggle-part');
       if (!btn || !part) return;
-      const lang = document.documentElement.lang || 'en';
-      if (lang === 'fa') {
-        btn.textContent = part.visible ? 'حذف / مخفی کردن بخش' : 'نمایش مجدد بخش';
-      } else if (lang === 'de') {
+      const isDe = document.documentElement.lang === 'de';
+      if (isDe) {
         btn.textContent = part.visible ? 'BAUTEIL AUSBLENDEN' : 'BAUTEIL EINBLENDEN';
       } else {
         btn.textContent = part.visible ? 'HIDE / DELETE PART' : 'SHOW PART';
@@ -2574,8 +2533,7 @@
       document.querySelectorAll('.swatch-dot').forEach((b) => b.classList.remove('is-active'));
       if (swatchBtn) swatchBtn.classList.add('is-active');
 
-      const meshes = getSelectedMeshes();
-      meshes.forEach((mesh) => {
+      getSelectedMeshes().forEach((mesh) => {
         if (mesh.material && mesh.material.color) {
           mesh.material.color.setHex(hexColor);
           mesh.material.needsUpdate = true;
@@ -2584,8 +2542,7 @@
     }
 
     function applyMaterialPreset(preset) {
-      const meshes = getSelectedMeshes();
-      meshes.forEach((mesh) => {
+      getSelectedMeshes().forEach((mesh) => {
         if (!mesh.material) return;
         if (preset === 'stone') {
           mesh.material.roughness = 0.52;
@@ -2615,7 +2572,7 @@
       });
     }
 
-    function buildDetailedBathroomScene() {
+    function buildBathroomCutawayScene() {
       bathRootGroup = new THREE.Group();
       scene3d.add(bathRootGroup);
       selectableParts = [];
@@ -2629,7 +2586,6 @@
       const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xE6F0F2, transparent: true, opacity: 0.28, roughness: 0.08 });
       const ledMat = new THREE.MeshStandardMaterial({ color: 0xFFF2D6, emissive: 0xFFD996, emissiveIntensity: 1.25, roughness: 0.2 });
 
-      // 1. Stone Tile Floor & Structural Base Slab
       const floorGroup = new THREE.Group();
       const slab = new THREE.Mesh(new THREE.BoxGeometry(3.8, 0.18, 3.2), stoneMat);
       slab.position.set(0, -0.09, 0);
@@ -2639,44 +2595,28 @@
       bathRootGroup.add(floorGroup);
       registerPart('floor_slab', 'Stone Floor & Plinth', floorGroup);
 
-      // 2. Back & Side Architectural Walls with Window Frame
       const wallsGroup = new THREE.Group();
       const backWall = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.55, 0.16), stoneMat);
       backWall.position.set(0, 1.275, -1.52);
       const leftWall = new THREE.Mesh(new THREE.BoxGeometry(0.16, 2.55, 3.2), stoneMat);
       leftWall.position.set(-1.82, 1.275, 0);
-
-      // Window recess frame & pane on back wall
-      const winFrameTop = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.06, 0.22), ceramicMat);
-      winFrameTop.position.set(0.95, 2.02, -1.5);
-      const winFrameBot = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.07, 0.24), ceramicMat);
-      winFrameBot.position.set(0.95, 1.02, -1.49);
-      const winFrameL = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.0, 0.22), ceramicMat);
-      winFrameL.position.set(0.5, 1.52, -1.5);
-      const winFrameR = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.0, 0.22), ceramicMat);
-      winFrameR.position.set(1.4, 1.52, -1.5);
-      const winGlass = new THREE.Mesh(new THREE.PlaneGeometry(0.84, 0.94), new THREE.MeshBasicMaterial({ color: 0xFFF9EC }));
+      const winGlass = new THREE.Mesh(new THREE.PlaneGeometry(0.86, 0.96), new THREE.MeshBasicMaterial({ color: 0xFFF9EC }));
       winGlass.position.set(0.95, 1.52, -1.43);
-
-      wallsGroup.add(backWall, leftWall, winFrameTop, winFrameBot, winFrameL, winFrameR, winGlass);
+      wallsGroup.add(backWall, leftWall, winGlass);
       bathRootGroup.add(wallsGroup);
       registerPart('walls_window', 'Walls & Window', wallsGroup);
 
-      // 3. Floating Warm Oak Vanity + Countertop Basin + Brushed Brass Faucet
       const vanityGroup = new THREE.Group();
       const cabinet = new THREE.Mesh(new THREE.BoxGeometry(1.22, 0.42, 0.52), oakMat);
       cabinet.position.set(-0.52, 0.68, -1.16);
-      const drawerGroove = new THREE.Mesh(new THREE.BoxGeometry(1.18, 0.015, 0.53), brassMat);
-      drawerGroove.position.set(-0.52, 0.68, -1.16);
       const sinkBowl = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.18, 0.14, 32), ceramicMat);
       sinkBowl.position.set(-0.52, 0.96, -1.12);
       const faucetSpout = new THREE.Mesh(new THREE.BoxGeometry(0.035, 0.22, 0.16), brassMat);
       faucetSpout.position.set(-0.52, 1.02, -1.25);
-      vanityGroup.add(cabinet, drawerGroove, sinkBowl, faucetSpout);
+      vanityGroup.add(cabinet, sinkBowl, faucetSpout);
       bathRootGroup.add(vanityGroup);
       registerPart('oak_vanity', 'Oak Vanity & Basin', vanityGroup);
 
-      // 4. Backlit Architectural LED Mirror
       const mirrorGroup = new THREE.Group();
       const ledBack = new THREE.Mesh(new THREE.BoxGeometry(0.96, 0.72, 0.02), ledMat);
       ledBack.position.set(-0.52, 1.66, -1.41);
@@ -2686,33 +2626,21 @@
       bathRootGroup.add(mirrorGroup);
       registerPart('led_mirror', 'Backlit LED Mirror', mirrorGroup);
 
-      // 5. Walk-In Frameless Glass Shower + Brass Rain Head & Hardware
       const showerGroup = new THREE.Group();
       const glassPanel = new THREE.Mesh(new THREE.BoxGeometry(0.025, 2.12, 1.28), glassMat);
       glassPanel.position.set(0.32, 1.08, -0.84);
-      const topBar = new THREE.Mesh(new THREE.BoxGeometry(0.035, 0.035, 1.28), brassMat);
-      topBar.position.set(0.32, 2.15, -0.84);
-      const rainArm = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.03, 0.03), brassMat);
-      rainArm.position.set(0.14, 2.02, -1.38);
       const rainHead = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.025, 28), brassMat);
       rainHead.position.set(0.32, 2.0, -1.38);
-      const tray = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.03, 1.28), new THREE.MeshStandardMaterial({ color: 0x2A2825, roughness: 0.55 }));
-      tray.position.set(-0.14, 0.025, -0.84);
-      showerGroup.add(glassPanel, topBar, rainArm, rainHead, tray);
+      showerGroup.add(glassPanel, rainHead);
       bathRootGroup.add(showerGroup);
       registerPart('glass_shower', 'Walk-In Shower & Brass', showerGroup);
 
-      // 6. Wall-Hung Ceramic WC + Flush Plate
       const wcGroup = new THREE.Group();
       const wcConcealed = new THREE.Mesh(new THREE.BoxGeometry(0.54, 1.05, 0.18), stoneMat);
       wcConcealed.position.set(-1.46, 0.525, -1.36);
       const wcBowl = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.34, 0.52), ceramicMat);
       wcBowl.position.set(-1.46, 0.42, -1.04);
-      const wcSeat = new THREE.Mesh(new THREE.BoxGeometry(0.39, 0.045, 0.5), ceramicMat);
-      wcSeat.position.set(-1.46, 0.61, -1.05);
-      const flushPlate = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.16, 0.02), brassMat);
-      flushPlate.position.set(-1.46, 0.92, -1.26);
-      wcGroup.add(wcConcealed, wcBowl, wcSeat, flushPlate);
+      wcGroup.add(wcConcealed, wcBowl);
       bathRootGroup.add(wcGroup);
       registerPart('wall_wc', 'Wall-Hung WC', wcGroup);
 
@@ -2752,9 +2680,8 @@
       warmLight3d.position.set(-0.5, 1.65, -1.1);
       scene3d.add(warmLight3d);
 
-      buildDetailedBathroomScene();
+      buildBathroomCutawayScene();
 
-      // Click-to-select part in 3D canvas
       const raycaster = new THREE.Raycaster();
       const pointer = new THREE.Vector2();
       canvas.addEventListener('click', (ev) => {
@@ -2867,15 +2794,14 @@
         },
         undefined,
         () => {
-          readout.textContent = '3D ARCHITECTURAL BATHROOM · SELECT PART TO EDIT';
+          readout.textContent = '3D ARCHITECTURAL BATHROOM CUTAWAY · SELECT OR CLICK PART';
           URL.revokeObjectURL(url);
         }
       );
     });
 
-    // Boot initialization
     window.addEventListener('load', () => {
-      initRepoMediaAssets();
+      initRepoAssets();
       setLanguage('en');
       recalculateEstimate();
       initThreeStage();
